@@ -37,7 +37,7 @@ class Window {
   int height,width,startx,starty;
   WINDOW* win, *frame;
   Color colorwin, colorframe;
-  char bord;
+  char bordure;
   void update() const;
 
  public:

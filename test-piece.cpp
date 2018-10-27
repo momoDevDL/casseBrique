@@ -7,12 +7,13 @@ void myprogram(){
   Window menu(3,30,1,0);
   Window plateau(h,w,1,6);
   menu.setCouleurBordure(BRED);
-  plateau.setCouleurBordure(BBLUE);
+  menu.setCouleurFenetre(WCYAN);
+  plateau.setCouleurBordure(WBLUE);
   
   menu.print(1,1,"Tapez q pour quitter !!!",WRED);
   
   int x=w/2,y=h/2;
-  char p='X';
+  char p='A';
   Color col=WBLUE;
   plateau.print(x,y,p,col);
   

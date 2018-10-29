@@ -110,5 +110,13 @@ void Window::setCouleurFenetre(Color c){
   wbkgd(win,COLOR_PAIR(colorwin));
   update();  
 }
+void setHauteur(int H){
+  height=H;
+  update();
+}
+void setLargeur(int L){
+  width=L;
+  update();
+}
 
 void Window::clear() const{  werase(win); update(); }

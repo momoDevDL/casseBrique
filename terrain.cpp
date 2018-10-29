@@ -1,19 +1,12 @@
 #include<iostream>
 #include"terrain.h"
 #include"window.h"
+
 //les constructeurs de terrain par defaut et paramétré
-terrain::terrain():field(0,0,0,0,'+'){};
+terrain::terrain():field(0,0,0,0,'+'){}
 terrain::terrain(int h,int w,int x,int y, char bordure):field(h,w,x,y,'+'){
-  field.colorwin=WRED;
-  field.colorframe=WBLACK;
-  field.frame=newwin(h+2,w+2,y,x);
-  field.win=subwin(field.frame,h,w,y+1,x+1);
-  wbkgd(field.frame,COLOR_PAIR(field.colorwin));
-  wbkgd(field.win,COLOR_PAIR(field.colorframe));
-  wborder(field.frame, c,c,c,c,c,c,c,c);
-  wattron(field.win,COLOR_PAIR(field.colorwin));
-  wattron(field.frame,COLOR_PAIR(field.colorframe));
-  field.update();
+  field.setCouleurBordure(WRED);
+  field.setCouleurFenetre(WBLACK);
 }
 //accesseur en lecture 
 Color terrain::getBkgdColorField()const{
@@ -42,14 +35,12 @@ void terrain::setBordColorField(Color couleur){
   this->field.setCouleurBordure(couleur);
 }
 void terrain::setHeightField(int H){
-  field.height=H;
+  field.setHauteur(H);
 }
 void terrain::setWidthField(int W){
-  field.width=W;
+  field.setLargeur(W);
 }
-void terrain::setBordureField(char c){
-  field.bord=c;
-}
+
 //methodes
 void terrain::clearField(){
   this->field.clear();

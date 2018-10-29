@@ -69,6 +69,7 @@ class Window {
   void setCouleurFenetre(Color);   // modifie la couleur de la fenêtre (ATTENTION, tout le contenu de la fenêtre prend la couleur)
   void setHauteur(int H);//modifie la hauteur de la fenetre et de la bordure 
   void setLargeur(int L);//modifie la largeur de la fenetre et de la bordure
+  void setBordure(char bordure);//modifie le caractere de la bordure 
 
   void clear() const; // enleve tout le contenu de la fenêtre
 

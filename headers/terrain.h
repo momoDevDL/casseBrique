@@ -1,7 +1,7 @@
 #ifndef __TERRAIN_H
 #define __TERRAIN_H
 #include"window.h"
-
+#include <string>
 class terrain{
 private:
 	Window field ;
@@ -24,9 +24,7 @@ public:
 	void setBordureField(char c);
 	//methodes
 	void clearField();
-	void printStringInField();
-	void updateField();
-
+	void printStringInField(int,int,std::string,Color);
 
 };
 

@@ -118,5 +118,9 @@ void setLargeur(int L){
   width=L;
   update();
 }
+void setBordure(char bordure){
+  bord=bordure;
+  update();
+}
 
 void Window::clear() const{  werase(win); update(); }

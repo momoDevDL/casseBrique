@@ -1,7 +1,7 @@
 #include<iostream>
 #include"terrain.h"
 #include"window.h"
-
+using namespace std;
 //les constructeurs de terrain par defaut et paramétré
 terrain::terrain():field(0,0,0,0,'+'){}
 terrain::terrain(int h,int w,int x,int y, char bordure):field(h,w,x,y,'+'){
@@ -40,11 +40,13 @@ void terrain::setHeightField(int H){
 void terrain::setWidthField(int W){
   field.setLargeur(W);
 }
-
+void terrain::setBordureField(char c){
+  field.setBordure(c);
+}
 //methodes
 void terrain::clearField(){
   this->field.clear();
 }
-//void terrain::printStringInField()
-//void terrain::updateField();
-
+void terrain::printStringInField(int x,int y,string s,Color c){
+  this->field.print(x,y,s,c);
+}

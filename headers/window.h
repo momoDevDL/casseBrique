@@ -75,14 +75,4 @@ class Window {
 
 };
 
-
-
-
-
-
-
-
-
-
-
 #endif

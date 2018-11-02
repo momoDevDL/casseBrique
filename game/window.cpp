@@ -1,6 +1,5 @@
 #include "window.h"
 
-
 void init_colors(void)
 {
   start_color();
@@ -111,15 +110,15 @@ void Window::setCouleurFenetre(Color c){
   update();  
 }
 void setHauteur(int H){
-  height=H;
+ this->height=H;
   update();
 }
 void setLargeur(int L){
-  width=L;
+  this->width=L;
   update();
 }
 void setBordure(char bordure){
-  bord=bordure;
+  this->bord=bordure;
   update();
 }
 

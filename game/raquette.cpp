@@ -2,51 +2,35 @@
 #include"raquette.h"
 
 //les constructeurs de racket par defaut et paramétré
-racket::racket():Surfer(0,0,0,0,'='){}
-racket::racket(int h,int w,int x,int y, char bordure):Surfer(h,w,x,y,'='){
-  Surfer.setCouleurBordure(WCYAN);
-  Surfer.setCouleurFenetre(WRED);
+racket::racket():height(2),width(8),posX(35),posY(20),bordureUP("_"),bordure1Side(","),bordure2Side("'"){}
+racket::racket(int h,int w,int x,int y):height(h),width(w),posX(x),posY(y),bordureUP("_"),bordure1Side(","),bordure2Side("'"){
 }
 
 //accesseur en lecture 
-Color racket::getBkgdColorRacket()const{
-  return Surfer.getCouleurFenetre();
-}
-Color racket::getBordColorRacket()const{
-  return Surfer.getCouleurBordure();
-}
 int racket::getHeightRacket()const{
-  return Surfer.getHauteur();
+  return height;
 }
 int racket::getWidthRacket()const{
-return  Surfer.getLargeur();
-}
-int racket::getYRacket()const{
-  return Surfer.getY();
+return width();
 }
 int  racket::getXRacket()const{
-  return Surfer.getX();
+  return posX;
 }
+int  racket::getYRacket()const{
+  return posY;
+}
+
 //accesseurs en ecriture
-void racket::setBkgdColorRacket(Color couleur){
-  Surfer.setCouleurFenetre(couleur)
-}
-void racket::setBordColorRacket(Color couleur){
-  Surfer.setCouleurBordure(couleur);
-}
 void racket::setHeightRacket(int H){
-  Surfer.setHauteur(H);
+  height = H;
 }
 void racket::setWidthRacket(int W){
-  Surfer.setLargeur(W);
+  width = W;
 }
-void racket::setBordureRacket(char c){
-  Surfer.setBordure(c);
+void racket::setPosXRacket(int X){
+  posX = X;
 }
-//methodes
-void racket::clearRacket(){
-  Surfer.clear();
+void racket::setPosYRacket(int Y){
+  posY = Y;
 }
-void racket::printStringInRacket(int x,int y,std::string s,Color c){
-  Surfer.print(x,y,s,c);
-}
+

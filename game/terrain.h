@@ -25,7 +25,7 @@ public:
 	void setWidthField(int W);
 	void setBordureField(char c);
 	//print un caractere dans la fenetre 
-	void printInField(int x,int y,char c);
+	void printInField(int x,int y,char c,Color col);
 	//methodes
 	void clearField(); //efface le contenu de la fenetre 
 	void printStringInField(int,int,std::string,Color); //print un string dans la fenetre

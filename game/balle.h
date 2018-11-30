@@ -1,6 +1,5 @@
 #ifndef __BALLE_H
 #define __BALLE_H
-#include"window.h"
 #include <string>
 class Ball{
 private:
@@ -16,6 +15,7 @@ public:
 	size_t getposX()const;
 	size_t getposY()const;
 	int getVitesse()const;
+	char getChar()const;
 	//accesseurs en ecriture
 	void setposX(size_t);
 	void setposY(size_t);

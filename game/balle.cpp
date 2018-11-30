@@ -14,6 +14,9 @@ size_t Ball::getposY()const{
 int Ball::getVitesse()const{
   return vitesse;
 }
+char Ball::getChar()const{
+  return c;
+}
 	//accesseurs en ecriture
 void Ball::setposX(size_t x){
   posX=x;

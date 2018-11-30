@@ -4,12 +4,12 @@
 #include"window.h"
 using namespace std;
 //les constructeurs de terrain par defaut et paramétré
-terrain::terrain():field(10,10,55,10,'+'),b('@',9,5,1){}
-terrain::terrain(Window &fields,Ball &_b):field(fields.getHauteur(),fields.getLargeur(),fields.getX(),fields.getY(),fields.getBordure()),b('@',_b.getposX(),_b.getposY(),_b.getVitesse()){
+terrain::terrain():field(22,78,0,0,'+'),b('@',9,5,1){}
+terrain::terrain(Window &fields,Ball &_b):field(fields.getHauteur(),fields.getLargeur(),fields.getX(),fields.getY(),fields.getBordure()),b(_b.getChar(),_b.getposX(),_b.getposY(),_b.getVitesse()){
  
   fields.setCouleurBordure(WRED);
   fields.setCouleurFenetre(WBLACK);
-  fields.print(_b.getposX(),_b.getposY(),'@');
+  //fields.print(_b.getposX(),_b.getposY(),_b.getChar());
 }
 //accesseur en lecture 
 Color terrain::getBkgdColorField()const{
@@ -37,8 +37,8 @@ void terrain::setBkgdColorField(Color couleur){
 void terrain::setBordColorField(Color couleur){
   field.setCouleurBordure(couleur);
 }
-void terrain::printInField(int x,int y,char c){
-  field.print(x,y,c);
+void terrain::printInField(int x,int y,char c,Color col){
+  field.print(x,y,c,col);
 }
 void terrain::setBordureField(char c){
   field.setBordure(c);
@@ -57,10 +57,10 @@ void terrain::collision_Ball_field(){
   size_t L=getWidthField() ;
   size_t Y=getYField();
   size_t X=getXField();
-  while((b.getposX()>X && b.getposY()>Y) || (b.getposX()<X+L && b.getposY()<Y+H) ){
-    printInField(b.getposX(),b.getposY(),' ');
+  while(b.getposX()<X+L && b.getposY()<Y+H){
+    printInField(b.getposX(),b.getposY(),' ',WRED);
     b.move_Ball();
-    printInField(b.getposX(),b.getposY(),'@');
+    printInField(b.getposX(),b.getposY(),b.getChar(),WRED);
   }
   b.setVitesse(-1*(b.getVitesse()));
 }

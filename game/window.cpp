@@ -94,7 +94,8 @@ void Window::print(int x, int y, char s) const{
 int Window::getX() const { return startx;} 
 int Window::getY() const { return starty;} 
 int Window::getHauteur() const { return height;} 
-int Window::getLargeur() const { return width;}  
+int Window::getLargeur() const { return width;}
+char Window::getBordure() const { return bord;}  
 Color Window::getCouleurBordure() const{ return colorframe;}
 Color Window::getCouleurFenetre() const{ return colorwin;}
 void Window::setCouleurBordure(Color c){
@@ -109,17 +110,23 @@ void Window::setCouleurFenetre(Color c){
   wbkgd(win,COLOR_PAIR(colorwin));
   update();  
 }
-void setHauteur(int H){
- this->height=H;
+void Window::setBordure(char c){
+  bord=c;
+  wborder(frame, bord,bord,bord,bord,bord,bord,bord,bord);
+  update();
+}
+
+/*void setHauteur(int H){
+  height=H;
   update();
 }
 void setLargeur(int L){
-  this->width=L;
+  width=L;
   update();
 }
 void setBordure(char bordure){
-  this->bord=bordure;
-  update();
-}
+  bord=bordure;
+  upate();
+  }*/
 
 void Window::clear() const{  werase(win); update(); }

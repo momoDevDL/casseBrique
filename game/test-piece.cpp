@@ -1,4 +1,4 @@
-#include "window.h"
+#include "headers/window.h"
 
 
 void myprogram(){
@@ -7,8 +7,10 @@ void myprogram(){
   Window menu(3,30,1,0);
   Window plateau(h,w,1,6);
   menu.setCouleurBordure(BRED);
-  menu.setCouleurFenetre(WCYAN);
+  menu.setCouleurFenetre(BCYAN);
   plateau.setCouleurBordure(WBLUE);
+  plateau.setCouleurFenetre(WRED);
+  
   
   menu.print(1,1,"Tapez q pour quitter !!!",WRED);
   
@@ -21,7 +23,7 @@ void myprogram(){
     {
       switch (ch) {
       case '1':
-	col=BMAGENTA;
+	col=BRED;
 	break;
       case '2':
 	col=WCYAN;
@@ -44,6 +46,7 @@ void myprogram(){
       case KEY_RIGHT:
 	plateau.print(x,y,' ');
 	plateau.print(++x,y,p,col);
+	plateau.setCouleurBordure(WYELLOW);
 	break;
       case '\n':
 	x=w/2,y=h/2;

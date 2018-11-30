@@ -21,7 +21,7 @@ enum Color {
   BYELLOW, // couleur fond = jaune,   couleur texte = noir
   BGREEN,  // couleur fond = vert,    couleur texte = noir 
   BMAGENTA,// couleur fond = magenta, couleur texte = noir
-  BRED,    // couleur fond = rouge,   couleur texte = noir
+  BRED   // couleur fond = rouge,   couleur texte = noir
 };
 
 
@@ -62,14 +62,16 @@ class Window {
   int getY() const;        // récupère l'ordonnée du coin supérieur gauche de la fenêtre 
   int getHauteur() const ; // récupère la hauteur de la fenêtre
   int getLargeur() const ; // récupère la largeur de la fenêtre
-
+  char getBordure()const;
   Color getCouleurBordure() const; // récupère la couleur de la bordure
   Color getCouleurFenetre() const; // récupère la couleur de la fenêtre
   void setCouleurBordure(Color);   // modifie la couleur de la bordure
-  void setCouleurFenetre(Color);   // modifie la couleur de la fenêtre (ATTENTION, tout le contenu de la fenêtre prend la couleur)
-  void setHauteur(int H);//modifie la hauteur de la fenetre et de la bordure 
+  void setCouleurFenetre(Color);  // modifie la couleur de la fenêtre (ATTENTION, tout le contenu de la fenêtre prend la couleur)
+  void setBordure(char c);
+
+  /* void setHauteur(int H);//modifie la hauteur de la fenetre et de la bordure 
   void setLargeur(int L);//modifie la largeur de la fenetre et de la bordure
-  void setBordure(char bordure);//modifie le caractere de la bordure 
+  void setBordure(char bordure);//modifie le caractere de la bordure */
 
   void clear() const; // enleve tout le contenu de la fenêtre
 

@@ -1,52 +1,66 @@
 #include<iostream>
 #include"terrain.h"
+#include"balle.h"
 #include"window.h"
 using namespace std;
 //les constructeurs de terrain par defaut et paramétré
-terrain::terrain():field(0,0,0,0,'+'){}
-terrain::terrain(int h,int w,int x,int y, char bordure):field(h,w,x,y,'+'){
-  field.setCouleurBordure(WRED);
-  field.setCouleurFenetre(WBLACK);
+terrain::terrain():field(10,10,55,10,'+'),b('@',9,5,1){}
+terrain::terrain(Window &fields,Ball &_b):field(fields.getHauteur(),fields.getLargeur(),fields.getX(),fields.getY(),fields.getBordure()),b('@',_b.getposX(),_b.getposY(),_b.getVitesse()){
+ 
+  fields.setCouleurBordure(WRED);
+  fields.setCouleurFenetre(WBLACK);
+  fields.print(_b.getposX(),_b.getposY(),'@');
 }
 //accesseur en lecture 
 Color terrain::getBkgdColorField()const{
-  return this->field.getCouleurFenetre();
+  return field.getCouleurFenetre();
 }
 Color terrain::getBordColorField()const{
-  return this->field.getCouleurBordure();
+  return field.getCouleurBordure();
 }
 int terrain::getHeightField()const{
-  return this->field.getHauteur();
+  return field.getHauteur();
 }
 int terrain::getWidthField()const{
-  return this->field.getLargeur();
+  return field.getLargeur();
 }
 int terrain::getXField()const{
-  return this->field.getX();
+  return field.getX();
 }
 int terrain::getYField()const{
-  return this->field.getY();
+  return field.getY();
 }
 //accesseurs en ecriture
 void terrain::setBkgdColorField(Color couleur){
-  this->field.setCouleurFenetre(couleur);
+  field.setCouleurFenetre(couleur);
 }
 void terrain::setBordColorField(Color couleur){
-  this->field.setCouleurBordure(couleur);
+  field.setCouleurBordure(couleur);
 }
-void terrain::setHeightField(int H){
-  field.setHauteur(H);
-}
-void terrain::setWidthField(int W){
-  field.setLargeur(W);
+void terrain::printInField(int x,int y,char c){
+  field.print(x,y,c);
 }
 void terrain::setBordureField(char c){
   field.setBordure(c);
 }
+
 //methodes
 void terrain::clearField(){
-  this->field.clear();
+  field.clear();
 }
 void terrain::printStringInField(int x,int y,string s,Color c){
-  this->field.print(x,y,s,c);
+  field.print(x,y,s,c);
+}
+
+void terrain::collision_Ball_field(){
+  size_t H=getHeightField() ;
+  size_t L=getWidthField() ;
+  size_t Y=getYField();
+  size_t X=getXField();
+  while((b.getposX()>X && b.getposY()>Y) || (b.getposX()<X+L && b.getposY()<Y+H) ){
+    printInField(b.getposX(),b.getposY(),' ');
+    b.move_Ball();
+    printInField(b.getposX(),b.getposY(),'@');
+  }
+  b.setVitesse(-1*(b.getVitesse()));
 }

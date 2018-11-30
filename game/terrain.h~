@@ -8,7 +8,7 @@ private:
 public:
 	//les constructeurs de terrain par defaut et paramétré
 	terrain();
-	terrain(Window field);
+	terrain(Window &field);
 	//accesseur en lecture 
 	Color getBkgdColorField()const;
 	Color getBordColorField()const;
@@ -22,6 +22,7 @@ public:
 	void setHeightField(int H);
 	void setWidthField(int W);
 	void setBordureField(char c);
+	void printInField(int x,int y,char c);
 	//methodes
 	void clearField();
 	void printStringInField(int,int,std::string,Color);

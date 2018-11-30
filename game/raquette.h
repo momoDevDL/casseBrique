@@ -1,31 +1,32 @@
 #ifndef __RAQUETTE_h
 #define __RAQUETTE_h
-#include"window.h"
 #include<string>
 class racket{
  private:
-  Window Surfer;
+  int height;
+  int width;
+  int posX;
+  int posY;
+  char bordureUP;
+  char bordure1Side;
+  char bordure2Side;
+  
  public :
-	//les constructeurs de racket par defaut et paramétré
-	racket();
-	racket(int h,int w,int x,int y, char bordure);
-	//accesseur en lecture 
-	Color getBkgdColorRacket()const;
-	Color getBordColorRacket()const;
-	int getHeightRacket()const;
-	int getWidthRacket()const;
-	int getYRacket()const;
-	int  getXRacket()const;
-	//accesseurs en ecriture
-	void setBkgdColorRacket(Color);
-	void setBordColorRacket(Color);
-	void setHeightRacket(int H);
-	void setWidthRacket(int W);
-	void setBordureRacket(char c);
-	//methodes
-	void clearRacket();
-	void printStringInRacket(int,int,std::string,Color);
+  //les constructeurs de racket par defaut et paramétré
+  racket();
+  racket(int h,int w,int x,int y);
+  //accesseur en lecture 
+  int getHeightRacket()const;
+  int getWidthRacket()const;
+  int getYRacket()const;
+  int getXRacket()const;
+  //accesseurs en ecriture
+  void setHeightRacket(int H);
+  void setWidthRacket(int W);
+  void setPosXRacket(int X);
+  void setPosYRacket(int Y);
 
+  
 };
 
 #endif

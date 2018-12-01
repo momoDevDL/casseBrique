@@ -2,35 +2,42 @@
 #include"balle.h"
 
 //les constructeurs de terrain par defaut et paramétré
-Ball::Ball():c('@'),posX(1),posY(1),vitesse(1){}
-Ball::Ball(char car,size_t x,size_t y,size_t v):c(car),posX(x),posY(y),vitesse(v){}
+Ball::Ball():c('@'),posX(1),posY(1),vitesseX(1),vitesseY(1){}
+Ball::Ball(char car,float x,float y,float vx,float vy):c(car),posX(x),posY(y),vitesseX(vx),vitesseY(vy){}
 	//accesseur en lecture 
-size_t Ball::getposX()const{
+float Ball::getposX()const{
   return posX;
 }
-size_t Ball::getposY()const{
+float Ball::getposY()const{
   return posY;
 }
-int Ball::getVitesse()const{
-  return vitesse;
+float Ball::getVitesseX()const{
+  return vitesseX;
+}
+float Ball::getVitesseY()const{
+  return vitesseY;
 }
 char Ball::getChar()const{
   return c;
 }
 	//accesseurs en ecriture
-void Ball::setposX(size_t x){
+void Ball::setposX(float x){
   posX=x;
 }
-void Ball::setposY(size_t y){
+void Ball::setposY(float y){
   posY=y;
-}void Ball::setVitesse(int v){
-  vitesse=v;
+}
+void Ball::setVitesseX(float vx){
+  vitesseX=vx;
+}
+void Ball::setVitesseY(float vy){
+  vitesseY=vy;
 }
 
 //methodes
 
 void Ball::move_Ball(){
-  setposX(posX+vitesse);
-  setposY(posY+vitesse);
+  setposX(posX+vitesseX);
+  setposY(posY+vitesseY);
 }
 

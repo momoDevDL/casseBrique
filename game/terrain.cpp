@@ -4,8 +4,8 @@
 #include"window.h"
 using namespace std;
 //les constructeurs de terrain par defaut et paramétré
-terrain::terrain():field(22,78,0,0,'+'),b('@',9,5,1){}
-terrain::terrain(Window &fields,Ball &_b):field(fields.getHauteur(),fields.getLargeur(),fields.getX(),fields.getY(),fields.getBordure()),b(_b.getChar(),_b.getposX(),_b.getposY(),_b.getVitesse()){
+terrain::terrain():field(22,78,0,0,'+'),b('@',9,5,1,1){}
+terrain::terrain(Window &fields,Ball &_b):field(fields.getHauteur(),fields.getLargeur(),fields.getX(),fields.getY(),fields.getBordure()),b(_b.getChar(),_b.getposX(),_b.getposY(),_b.getVitesseX(),_b.getVitesseY()){
  
   fields.setCouleurBordure(WRED);
   fields.setCouleurFenetre(WBLACK);
@@ -52,15 +52,27 @@ void terrain::printStringInField(int x,int y,string s,Color c){
   field.print(x,y,s,c);
 }
 
-void terrain::collision_Ball_field(){
-  size_t H=getHeightField() ;
-  size_t L=getWidthField() ;
+void terrain::collision_Ball_field(Color col){
+  size_t H=getHeightField()-2 ;
+  size_t L=getWidthField()-2 ;
   size_t Y=getYField();
   size_t X=getXField();
-  while(b.getposX()<X+L && b.getposY()<Y+H){
-    printInField(b.getposX(),b.getposY(),' ',WRED);
+  while(b.getposX()<(float)(X+L) && b.getposY()<(float)(Y+H) && b.getposY()>(float)Y && b.getposX()>(float)X){
+    printInField(b.getposX(),b.getposY(),' ',col);
     b.move_Ball();
-    printInField(b.getposX(),b.getposY(),b.getChar(),WRED);
+    printInField(b.getposX(),b.getposY(),b.getChar(),col);
+
   }
-  b.setVitesse(-1*(b.getVitesse()));
+  if(b.getposY()==(float)(Y+H)|| b.getposY()==(float)Y){
+    b.setVitesseY(-1*(b.getVitesseY()));
+    printInField(b.getposX(),b.getposY(),' ',col);
+    b.move_Ball();
+    printInField(b.getposX(),b.getposY(),b.getChar(),col);
+  }
+  if(b.getposX()==(float)(X+L) || b.getposX()==(float)X){
+    b.setVitesseX(-1*(b.getVitesseX()));
+    printInField(b.getposX(),b.getposY(),' ',col);
+    b.move_Ball();
+    printInField(b.getposX(),b.getposY(),b.getChar(),col);
+  }
 }

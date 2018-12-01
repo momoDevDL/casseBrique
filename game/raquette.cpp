@@ -2,8 +2,8 @@
 #include"raquette.h"
 
 //les constructeurs de racket par defaut et paramétré
-racket::racket():height(2),width(8),posX(35),posY(20),bordureUP("_"),bordure1Side(","),bordure2Side("'"){}
-racket::racket(int h,int w,int x,int y):height(h),width(w),posX(x),posY(y),bordureUP("_"),bordure1Side(","),bordure2Side("'"){
+racket::racket():height(2),width(8),posX(35),posY(20),bordureUP('_'),bordure1Side(','),bordure2Side('\''){}
+racket::racket(int h,int w,int x,int y):height(h),width(w),posX(x),posY(y){
 }
 
 //accesseur en lecture 
@@ -11,7 +11,7 @@ int racket::getHeightRacket()const{
   return height;
 }
 int racket::getWidthRacket()const{
-return width();
+return width;
 }
 int  racket::getXRacket()const{
   return posX;

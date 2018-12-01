@@ -29,7 +29,7 @@ public:
 	//methodes
 	void clearField(); //efface le contenu de la fenetre 
 	void printStringInField(int,int,std::string,Color); //print un string dans la fenetre
-	void collision_Ball_field();
+	void collision_Ball_field(Color col);
 };
 
 #endif

@@ -4,16 +4,16 @@
 #include"balle.h"
 void myProgram(){
   Window w(30,70,2,2,'=');
-  Ball b('@',5,5,2);
+  Ball b('@',35,25,0.1,0.1);
    terrain  ter(w,b);
   //terrain menu;
   int ch ;
   //char p ='@';
   //ter.printInField(5,10,p,WBLACK);
-  // ter.printInField(b.getposX(),b.getposY(),b.getChar(),WRED);
+  ter.printInField(b.getposX(),b.getposY(),b.getChar(),WRED);
     while((ch = getch()) != 'q')
     {
-      //ter.collision_Ball_field();
+      ter.collision_Ball_field(WRED);
       switch (ch) {
       case '1':
 	ter.setBkgdColorField(WCYAN);
@@ -28,11 +28,12 @@ void myProgram(){
        	ter.setBkgdColorField(WBLACK);
 	break;
       case KEY_UP:
-       	ter.printInField(b.getposX(),b.getposY(),' ',WRED);
+	// 	ter.printInField(b.getposX(),b.getposY(),' ',WRED);
 	//	b.setposX(b.getposX()+1);
 	//b.setposY(b.getposY()+1);
-       	b.move_Ball();
-       	ter.printInField(b.getposX(),b.getposY(),b.getChar(),WRED);
+	//	b.move_Ball();
+       	//ter.printInField(b.getposX(),b.getposY(),b.getChar(),WRED);
+
 	break;
       }
       

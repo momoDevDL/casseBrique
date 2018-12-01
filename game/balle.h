@@ -4,22 +4,25 @@
 class Ball{
 private:
 	char c ;
-	size_t posX ;
-	size_t posY;
-	int vitesse;
+	float posX ;
+	float posY;
+	float vitesseX;
+	float vitesseY;
 public:
 	//les constructeurs de terrain par defaut et paramétré
 	Ball();
-	Ball(char car,size_t x,size_t y,size_t v);
+	Ball(char car,float x,float y,float vx,float vy);
 	//accesseur en lecture 
-	size_t getposX()const;
-	size_t getposY()const;
-	int getVitesse()const;
+	float getposX()const;
+	float getposY()const;
+	float getVitesseX()const;
+	float getVitesseY()const;
 	char getChar()const;
 	//accesseurs en ecriture
-	void setposX(size_t);
-	void setposY(size_t);
-	void setVitesse(int);
+	void setposX(float);
+	void setposY(float);
+	void setVitesseX(float);
+	void setVitesseY(float);
 	//methodes
 
 	void move_Ball();

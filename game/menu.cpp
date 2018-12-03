@@ -1,52 +1,50 @@
-#ifndef __MENU_H
-#define __MENU_H
 #include "window.h"
+#include "menu.h"
+#include <string>
+
 
 //constructeurs de menu
-menu::menu():Menu(0,0,0,0,'_'){}
-menu::menu(int h,int w,int x,int y, char bordure):Menu(h,w,x,y,bordure){}
+Menu::Menu():menu(0,0,0,0,'_'){}
+Menu::Menu(Window &w):menu(w.getHauteur(),w.getLargeur(),w.getX(),w.getY(),w.getBordure()){}
 
-//accesseur en lecture 
-Color menu::getBkgdColorMenu()const{
-  return Menu.getCouleurFenetre();
+//accesseur en lecture ColorMenu::getBkgdColorMenu()const{
+  return w.getCouleurFenetre();
 }
-Color menu::getBordColorMenu()const{
-  return Menu.getCouleurBordure();
+Color Menu::getBordColorMenu()const{
+  return w.getCouleurBordure();
 }
-int menu::getHeightMenu()const{
-  return Menu.getHauteur();
+int Menu::getHeightMenu()const{
+  return w.getHauteur();
 }
-int menu::getWidthMenu()const{
-  return Menu.getLaegeur();
+int Menu::getWidthMenu()const{
+  return w.getLargeur();
 }
-int menu::getYMenu()const{
-  return Menu.getY();
+int Menu::getYMenu()const{
+  return w.getY();
 }
-int  menu::getXMenu()const{
-  return Menu.getX();
+int  Menu::getXMenu()const{
+  return w.getX();
 }
 
 //accesseurs en ecriture
-void menu::setBkgdColorMenu(Color couleur){
-  Menu.setCouleurFenetre(couleur);
+void Menu::setBkgdColorMenu(Color couleur){
+  w.setCouleurFenetre(couleur);
 }
-void menu::setBordColorMenu(Color couleur){
-  Menu.setCouleurBordure(couleur);
+void Menu::setBordColorMenu(Color couleur){
+  w.setCouleurBordure(couleur);
 }
-void menu::setHeightMenu(int H){
-  Menu.setHauteur(H);
+void Menu::setHeightMenu(int H){
+  w.setHauteur(H);
 }
-void menu::setWidthMenu(int W){
-  Menu.setLargeur(W);
+void Menu::setWidthMenu(int W){
+  w.setLargeur(W);
 }
-void menu::setBordureMenu(char c){
-  Menu.setBordure(c);
+void Menu::setBordureMenu(char c){
+  w.setBordure(c);
 }
 
 //methodes
-void menu::clearMenu(){
-  Menu.clear();
 }
-void menu::printStringInMenu(int x,int y,string s,Color c){
-  Menu.print(x,y,s,c);
+void Menu::printStringInMenu(int x,int y,string s){
+  w.print(x,y,s,c);
 }

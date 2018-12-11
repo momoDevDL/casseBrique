@@ -52,7 +52,7 @@ class Window {
   // à la position (x,y) dans la fenetre.
   // si un couleur est spécifié l'affichage utilise cette couleur, sinon la couleur de la fenêtre est utilisée
   void print(int x, int y, std::string s, Color c) const;
-  void print(int x, int y, char s, Color c) const;
+  void print(float x, float y, char s, Color c) const;
   void print(int x, int y, std::string s) const;
   void print(int x, int y, char s) const; 
 

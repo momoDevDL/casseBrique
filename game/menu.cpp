@@ -1,50 +1,38 @@
 #include "window.h"
 #include "menu.h"
-#include <string>
+#include <string.h>
 
 
 //constructeurs de menu
-Menu::Menu():menu(0,0,0,0,'_'){}
-Menu::Menu(Window &w):menu(w.getHauteur(),w.getLargeur(),w.getX(),w.getY(),w.getBordure()){}
+Menu::Menu():menu(30,50,74,2,'='){}
+Menu::Menu(Window &w):menu(w.getHauteur(),w.getLargeur(),w.getX(),w.getY(),w.getBordure()){
 
 //accesseur en lecture ColorMenu::getBkgdColorMenu()const{
-  return w.getCouleurFenetre();
+// w.getCouleurFenetre();
+menu.setCouleurFenetre(WRED);
 }
 Color Menu::getBordColorMenu()const{
-  return w.getCouleurBordure();
+  return menu.getCouleurBordure();
 }
 int Menu::getHeightMenu()const{
-  return w.getHauteur();
+  return menu.getHauteur();
 }
 int Menu::getWidthMenu()const{
-  return w.getLargeur();
+  return menu.getLargeur();
 }
 int Menu::getYMenu()const{
-  return w.getY();
+  return menu.getY();
 }
 int  Menu::getXMenu()const{
-  return w.getX();
+  return menu.getX();
 }
 
 //accesseurs en ecriture
 void Menu::setBkgdColorMenu(Color couleur){
-  w.setCouleurFenetre(couleur);
+  menu.setCouleurFenetre(couleur);
 }
-void Menu::setBordColorMenu(Color couleur){
-  w.setCouleurBordure(couleur);
-}
-void Menu::setHeightMenu(int H){
-  w.setHauteur(H);
-}
-void Menu::setWidthMenu(int W){
-  w.setLargeur(W);
-}
-void Menu::setBordureMenu(char c){
-  w.setBordure(c);
-}
-
 //methodes
-}
-void Menu::printStringInMenu(int x,int y,string s){
-  w.print(x,y,s,c);
+
+void Menu::printStringInMenu(int x,int y,std::string s){
+ menu.print(x,y,s);
 }

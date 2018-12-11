@@ -37,7 +37,7 @@ void Ball::setVitesseY(float vy){
 //methodes
 
 void Ball::move_Ball(){
-  setposX(posX+vitesseX);
-  setposY(posY+vitesseY);
+  setposX(posX+getVitesseX());
+  setposY(posY+getVitesseY());
 }
 

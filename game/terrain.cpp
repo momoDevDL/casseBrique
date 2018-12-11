@@ -58,44 +58,24 @@ void terrain::collision_Ball_field(Ball &b){
   int  Y=getYField()-2;
   int  X=getXField()-2;
   
-  // bool collision_Bordure=false;
-  // float tmp= 0.1;
-  // float timelapseY= b.getVitesseY();
-  /* if(b.getposX()<(X+L) && b.getposY()<(Y+H) && b.getposY()>Y && b.getposX()>X){
-    printInField(b.getposX(),b.getposY(),' ',col);
-    b.move_Ball();
-    printInField(b.getposX(),b.getposY(),b.getChar(),col);
-  }*/
-
-  
-  
   if(b.getposY()==(Y+H)-1 || b.getposY()==Y){
     b.setVitesseY(-1*(b.getVitesseY()));
-    //b.setVitesseY(0);
-    // cout<<b.getVitesseY();
-    //cout<<"fuuuuck";
-    // collision_Bordure=true;
-    // printInField(b.getposX(),b.getposY(),' ',col);
-    //b.move_Ball();
-    // printInField(b.getposX(),b.getposY(),b.getChar(),col);
+   
   }
   if(b.getposX()==(X+L)-1|| b.getposX()==X){
     b.setVitesseX(-1*(b.getVitesseX()));
-    //  collision_Bordure=true;
-    // printInField(b.getposX(),b.getposY(),' ',col);
-    //b.move_Ball();
-    //  printInField(b.getposX(),b.getposY(),b.getChar(),col);
-    }
+  }
 
   if(b.getposX()==X && b.getposY()==Y){
      b.setVitesseX(-1*(b.getVitesseX()));
      b.setVitesseY(-1*(b.getVitesseY()));
   }
-  if(b.getposX()==X && b.getposY()==Y){
+  if(b.getposX()==X+L && b.getposY()==Y+H){
      b.setVitesseX(-1*(b.getVitesseX()));
      b.setVitesseY(-1*(b.getVitesseY()));
   }
-  //return collision_Bordure;
 }
+
+
 
 

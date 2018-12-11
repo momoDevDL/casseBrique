@@ -31,7 +31,7 @@ void myProgram(){
 	  b.move_Ball();
 	  ter.collision_Ball_field(b);
 	  GlobalPrint(b,ter,r1);
-	//ter.printInField(b.getposX(),b.getposY(),b.getChar(),WCYAN);
+	  
 	switch (ch) {
 	case '1':
 	  ter.setBkgdColorField(WCYAN);
@@ -49,13 +49,23 @@ void myProgram(){
 	
 	  break;
 	case KEY_LEFT:
-	  r1.setPosXRacket(r1.getXRacket()-4);
-	  // ter.clearField();
-	  // printRacket(r1,ter);
+	  if (((r1.getXRacket()-(ter.getXField()-2))<=4)){
+	    
+	    r1.setPosXRacket(ter.getXField()-2);
+
+	  } else if((r1.getXRacket()-(ter.getXField()-2))>4){
+	    r1.setPosXRacket(r1.getXRacket()-4);
+	  }
 	  GlobalPrint(b,ter,r1);
 	  break;
 	case KEY_RIGHT:
-	  r1.setPosXRacket(r1.getXRacket()+4);
+	  if ((( ((ter.getXField()-2) + ter.getWidthField()) ) - (r1.getXRacket()+r1.getWidthRacket())) >= 4 ){
+	    
+	    r1.setPosXRacket(r1.getXRacket()+4);
+
+	  } else if(((r1.getXRacket()+r1.getWidthRacket())-((ter.getXField()-2)+ter.getWidthField()))<4){
+	    r1.setPosXRacket(ter.getXField()+ter.getWidthField()-2);
+	  }
 	  GlobalPrint(b,ter,r1);
 	  break;
 	}

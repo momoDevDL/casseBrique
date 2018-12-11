@@ -5,10 +5,10 @@
 //les constructeurs de racket par defaut et paramétré
 
 racket::racket():height(2),width(8),posX(35),posY(20){
-  setBordureUP('_'),setBordure1Side(','),setBordure2Side('\'');}
+  setBordureUP('-'),setBordure1Side(','),setBordure2Side('\'');}
 
 racket::racket(unsigned int w,unsigned int x,unsigned int y ):width(w),posX(x),posY(y){
-  setHeightRacket(2),setBordureUP('_'),setBordure1Side(','),setBordure2Side('\'');}
+  setHeightRacket(2),setBordureUP('-'),setBordure1Side(','),setBordure2Side('\'');}
 
 //accesseur en lecture 
 unsigned int racket::getHeightRacket()const{
@@ -68,20 +68,20 @@ void printRacket(racket &r,terrain &t){
   while (hauteur < r.getHeightRacket()){
     
     if (hauteur == 0){
-      t.printInField(r.getXRacket()+longueur,r.getYRacket()+hauteur,r.getbordure1Side(),WRED);
+      t.printInField(r.getXRacket()+longueur,r.getYRacket()+hauteur,r.getbordure1Side(),WBLACK);
       longueur++;
     }else if (hauteur == 1){
-      t.printInField(r.getXRacket()+longueur,r.getYRacket()+hauteur,r.getbordure2Side(),WRED);
+      t.printInField(r.getXRacket()+longueur,r.getYRacket()+hauteur,r.getbordure2Side(),WBLACK);
       longueur++;
     }
     while (longueur <r.getWidthRacket()){
-      t.printInField(r.getXRacket()+longueur,r.getYRacket()+hauteur,r.getbordureUP(),WRED);
+      t.printInField(r.getXRacket()+longueur,r.getYRacket()+hauteur,r.getbordureUP(),WBLACK);
       longueur++;
     }
     if (hauteur == 0){
-      t.printInField(r.getXRacket()+longueur,r.getYRacket()+hauteur,r.getbordure1Side(),WRED);
+      t.printInField(r.getXRacket()+longueur,r.getYRacket()+hauteur,r.getbordure1Side(),WBLACK);
     }else if (hauteur == 1){
-      t.printInField(r.getXRacket()+longueur,r.getYRacket()+hauteur,r.getbordure2Side(),WRED);
+      t.printInField(r.getXRacket()+longueur,r.getYRacket()+hauteur,r.getbordure2Side(),WBLACK);
     }
     hauteur++;
     longueur=0;

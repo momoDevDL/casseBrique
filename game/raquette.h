@@ -1,33 +1,44 @@
 #ifndef __RAQUETTE_h
 #define __RAQUETTE_h
-#include<string>
+#include "terrain.h"
+#include <string>
 class racket{
  private:
-  int height;
-  int width;
-  int posX;
-  int posY;
-  char bordureUP;
-  char bordure1Side;
-  char bordure2Side;
+ unsigned int height;
+ unsigned int width;
+ unsigned int posX;
+ unsigned int posY;
+ char bordureUP;
+ char bordure1Side;
+ char bordure2Side;
   
  public :
   //les constructeurs de racket par defaut et paramétré
   racket();
-  racket(int h,int w,int x,int y);
+  racket(unsigned int w,unsigned int x,unsigned int y);
+  
   //accesseur en lecture 
-  int getHeightRacket()const;
-  int getWidthRacket()const;
-  int getYRacket()const;
-  int getXRacket()const;
+  unsigned int getHeightRacket()const;
+  unsigned int getWidthRacket()const;
+  unsigned int getYRacket()const;
+  unsigned int getXRacket()const;
+  char getbordureUP()const;
+  char getbordure1Side()const;
+  char getbordure2Side()const;
+  
   //accesseurs en ecriture
-  void setHeightRacket(int H);
-  void setWidthRacket(int W);
-  void setPosXRacket(int X);
-  void setPosYRacket(int Y);
+  void setHeightRacket(unsigned int H);
+  void setWidthRacket(unsigned int W);
+  void setPosXRacket(unsigned int X);
+  void setPosYRacket(unsigned int Y);
+  void setBordureUP(char BU);
+  void setBordure1Side(char B1S);
+  void setBordure2Side(char B2S);
 
+  // methodes
   
 };
 
+void printRacket(racket &r,terrain &t);
 #endif
 

@@ -1,6 +1,7 @@
 #include<iostream>
 #include"window.h"
 #include"terrain.h"
+#include"raquette.h"
 #include"balle.h"
 #include"menu.h"
 using namespace std;
@@ -9,6 +10,8 @@ void myProgram(){
   Menu menu;
   Ball b('@',20,10,1,1);
   terrain  ter(w,b);
+  racket r1(8,35,26);
+  printRacket(r1,ter);
   //terrain menu;1
   int ch ;
   bool collision;
@@ -35,48 +38,20 @@ void myProgram(){
 	  b.move_Ball();
 	  ter.collision_Ball_field(b,WCYAN);
 	  ter.clearField();
-	  //cout<<b.getVitesseY()<<" ("<<b.getposX()<<","<<b.getposY()<<")";
 	  ter.printInField(b.getposX(),b.getposY(),b.getChar(),WBLACK);
-	  // std::cout<<collision<<" ";
-	  /*if(!collision){
-	   
-	    }*/
-	  // ter.clearField();
-	  //       	ter.collision_Ball_field(WCYAN);
-	  // 	ter.printInField(b.getposX(),b.getposY(),' ',WRED);
-	  //	b.setposX(b.getposX()+1);
-	  //b.setposY(b.getposY()+1);
-	  //	b.move_Ball();
-	  //ter.printInField(b.getposX(),b.getposY(),b.getChar(),WRED);
-
 	  break;
-      }
-	
-	
-    }
-	
-	/*case KEY_DOWN:
-	ter.print(5,10,' ');
-	ter.print(x,++y,p);
-	break;
-      case KEY_LEFT:
-	ter.print(x,y,' ');
-	ter.print(--x,y,p,col);
-	break;
-      case KEY_RIGHT:
-	ter.print(x,y,' ');
-	ter.print(++x,y,p,col);
-	ter.setCouleurBordure(WYELLOW);
-	break;
-      case '\n':
-	x=w/2,y=h/2;
-	ter.print(x,y,p,col);
-	break;
-      case '\t':
-	Color tmp= menu.getCouleurBordure();
-	menu.setCouleurBordure(ter.getCouleurBordure());
-	ter.setCouleurBordure(tmp);
-	break;*/
+	case KEY_LEFT:
+	  r1.setPosXRacket(r1.getXRacket()-4);
+	  ter.clearField();
+	  printRacket(r1,ter);
+	  break;
+	case KEY_RIGHT:
+	  r1.setPosXRacket(r1.getXRacket()+4);
+	  ter.clearField();
+	  printRacket(r1,ter);	
+	  break;
+	}
+      }    
 }
 
 int main(){

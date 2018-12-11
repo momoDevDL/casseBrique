@@ -4,7 +4,7 @@
 class Ball{
 private:
 	char c ;
-	float posX ;
+	float  posX ;
 	float posY;
 	float vitesseX;
 	float vitesseY;

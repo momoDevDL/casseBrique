@@ -75,7 +75,7 @@ void Window::print(int x, int y, std::string s, Color c) const {
   wattroff(win,COLOR_PAIR(c));
   update();  
 }
-void Window::print(int x, int y, char s, Color c) const{
+void Window::print(float x, float y, char s, Color c) const{
   wattron(win,COLOR_PAIR(c));
   mvwaddch(win,y,x,s);
   wattroff(win,COLOR_PAIR(c));

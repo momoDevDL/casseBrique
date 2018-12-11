@@ -1,6 +1,7 @@
 #ifndef __MENU_H
 #define __MENU_H
 #include "window.h"
+#include<string.h>
 
 class Menu {
 
@@ -16,21 +17,21 @@ private:
 	//accesseur en lecture
 	Color getBKgdColorMenu()const;
 	Color getBordColorMenu()const; 
-	int GetHeightMenu()const;
-	int GetWidthMenu()const;
+	int getHeightMenu()const;
+	int getWidthMenu()const;
 	int getYMenu()const;
 	int getXMenu()const;
 
 	// accsseur en ecriture
-	void setBkgColorMenu(Color);
+	void setBkgdColorMenu(Color);
 	void setBordColorMenu(Color);
-       	void setHeightMenu(int H);
-	void setWidhtMenu(int W);
+       	//void setHeightMenu(int H);
+	//	void setWidthMenu(int W);
 	void setBordureMenu(char c);
 
 	//methodes
 
-	void printStriingMenu(int x, int y, std::string s);
+	void printStringInMenu(int x, int y,std::string);
 	
 	
 };

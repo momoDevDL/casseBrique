@@ -8,7 +8,7 @@ terrain::terrain():field(22,78,0,0,'+'),b('@',9,5,1,1){}
 terrain::terrain(Window &fields,Ball &_b):field(fields.getHauteur(),fields.getLargeur(),fields.getX(),fields.getY(),fields.getBordure()),b(_b.getChar(),_b.getposX(),_b.getposY(),_b.getVitesseX(),_b.getVitesseY()){
  
   //fields.setCouleurBordure(WRED);
-  fields.setCouleurFenetre(WBLACK);
+  //fields.setCouleurFenetre(BWHITE);
   //fields.print(_b.getposX(),_b.getposY(),_b.getChar());
 }
 //accesseur en lecture 
@@ -52,7 +52,7 @@ void terrain::printStringInField(int x,int y,string s,Color c){
   field.print(x,y,s,c);
 }
 
-void terrain::collision_Ball_field(Ball &b,Color col){
+void terrain::collision_Ball_field(Ball &b){
   int  H=getHeightField();
   int  L=getWidthField();
   int  Y=getYField()-2;

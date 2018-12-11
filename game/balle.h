@@ -1,6 +1,7 @@
 #ifndef __BALLE_H
 #define __BALLE_H
 #include <string>
+
 class Ball{
 private:
 	char c ;
@@ -26,8 +27,11 @@ public:
 	//methodes
 
 	void move_Ball();
+	
+	//void printBall(terrain &ter);
 
 
 };
+
 
 #endif

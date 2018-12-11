@@ -5,21 +5,32 @@
 #include"balle.h"
 #include"menu.h"
 using namespace std;
+void GlobalPrint(Ball &b,terrain &ter,racket &r){
+  ter.clearField();
+  ter.printInField(b.getposX(),b.getposY(),b.getChar(),WBLACK);
+  printRacket(r,ter);
+}
 void myProgram(){
-  Window w(30,70,2,2,'=');
+  Window w(30,70,2,2,'_');
   Menu menu;
   Ball b('@',20,10,1,1);
   terrain  ter(w,b);
+  ter.setBkgdColorField(BWHITE);
+  ter.setBordColorField(BWHITE);
   racket r1(8,35,26);
-  printRacket(r1,ter);
+  // printRacket(r1,ter);
   //terrain menu;1
   int ch ;
-  bool collision;
+  // bool collision;
   //char p ='@';
   //ter.printInField(5,10,p,WBLACK);
-  ter.printInField(b.getposX(),b.getposY(),b.getChar(),WCYAN);
+  // ter.printInField(b.getposX(),b.getposY(),b.getChar(),WCYAN);
+ 
     while((ch = getch()) != 'q')
       {
+	  b.move_Ball();
+	  ter.collision_Ball_field(b);
+	  GlobalPrint(b,ter,r1);
 	//ter.printInField(b.getposX(),b.getposY(),b.getChar(),WCYAN);
 	switch (ch) {
 	case '1':
@@ -35,20 +46,17 @@ void myProgram(){
 	  ter.setBkgdColorField(WBLACK);
 	  break;
 	case KEY_UP:
-	  b.move_Ball();
-	  ter.collision_Ball_field(b,WCYAN);
-	  ter.clearField();
-	  ter.printInField(b.getposX(),b.getposY(),b.getChar(),WBLACK);
+	
 	  break;
 	case KEY_LEFT:
 	  r1.setPosXRacket(r1.getXRacket()-4);
-	  ter.clearField();
-	  printRacket(r1,ter);
+	  // ter.clearField();
+	  // printRacket(r1,ter);
+	  GlobalPrint(b,ter,r1);
 	  break;
 	case KEY_RIGHT:
 	  r1.setPosXRacket(r1.getXRacket()+4);
-	  ter.clearField();
-	  printRacket(r1,ter);	
+	  GlobalPrint(b,ter,r1);
 	  break;
 	}
       }    

@@ -1,6 +1,6 @@
 #include<iostream>
 #include"balle.h"
-#include"terrain.h"
+
 //les constructeurs de terrain par defaut et paramétré
 Ball::Ball():c('@'),posX(1),posY(1),vitesseX(1),vitesseY(1){}
 Ball::Ball(char car,float x,float y,float vx,float vy):c(car),posX(x),posY(y),vitesseX(vx),vitesseY(vy){}
@@ -41,6 +41,3 @@ void Ball::move_Ball(){
   setposY(posY+getVitesseY());
 }
 
-/*void PrintBall(Ball &b,terrain &ter){
-  ter.printInField(b.getposX(),b.getposY(),b.getChar(),WBLACK);
-}*/

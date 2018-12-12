@@ -58,15 +58,18 @@ void terrain::collision_Ball_field(Ball &b){
   int  Y=getYField()-2;
   int  X=getXField()-2;
   
-  if(b.getposY()==(Y+H)-1 || b.getposY()==Y){
+  if(b.getposY()==(Y+H)-2 || b.getposY()==Y){
     b.setVitesseY(-1*(b.getVitesseY()));
-   
+    if(b.getposY()==(Y+H)-2){
+      b.setVitesseX(0);
+      b.setVitesseY(0);
+    }
   }
   if(b.getposX()==(X+L)-1|| b.getposX()==X){
     b.setVitesseX(-1*(b.getVitesseX()));
   }
 
-  if(b.getposX()==X && b.getposY()==Y){
+  if(b.getposX()==X-1 && b.getposY()==Y-1){
      b.setVitesseX(-1*(b.getVitesseX()));
      b.setVitesseY(-1*(b.getVitesseY()));
   }

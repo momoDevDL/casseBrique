@@ -43,6 +43,7 @@ void GlobalCollision(Ball &b, terrain &ter, racket &r){
   ter.collision_Ball_field(b);
 }
 
+
 void myProgram(){
   Window w(30,70,2,2,'_');
   Menu menu;

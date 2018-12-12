@@ -7,8 +7,8 @@
 using namespace std;
 void GlobalPrint(Ball &b,terrain &ter,racket &r){
   ter.clearField();
-  ter.printInField(b.getposX(),b.getposY(),b.getChar(),WBLACK);
   printRacket(r,ter);
+  ter.printInField(b.getposX(),b.getposY(),b.getChar(),WBLACK);
 }
 void myProgram(){
   Window w(30,70,2,2,'_');
@@ -18,13 +18,8 @@ void myProgram(){
   ter.setBkgdColorField(BWHITE);
   ter.setBordColorField(BWHITE);
   racket r1(8,35,26);
-  // printRacket(r1,ter);
-  //terrain menu;1
   int ch ;
-  // bool collision;
-  //char p ='@';
-  //ter.printInField(5,10,p,WBLACK);
-  // ter.printInField(b.getposX(),b.getposY(),b.getChar(),WCYAN);
+ 
  
     while((ch = getch()) != 'q')
       {
@@ -59,12 +54,14 @@ void myProgram(){
 	  GlobalPrint(b,ter,r1);
 	  break;
 	case KEY_RIGHT:
-	  if ((( ((ter.getXField()-2) + ter.getWidthField()) ) - (r1.getXRacket()+r1.getWidthRacket())) >= 4 ){
+	  
+	  if ((( ((ter.getXField()-2) + ter.getWidthField()) ) - (r1.getXRacket()+r1.getWidthRacket())) > 4 ){
 	    
 	    r1.setPosXRacket(r1.getXRacket()+4);
 
-	  } else if(((r1.getXRacket()+r1.getWidthRacket())-((ter.getXField()-2)+ter.getWidthField()))<4){
-	    r1.setPosXRacket(ter.getXField()+ter.getWidthField()-2);
+	  } else if((((ter.getXField()-2)+ter.getWidthField())-(r1.getXRacket()+r1.getWidthRacket()))<=4){
+	    
+	    r1.setPosXRacket((ter.getXField() + ter.getWidthField())-(r1.getWidthRacket()+3));
 	  }
 	  GlobalPrint(b,ter,r1);
 	  break;

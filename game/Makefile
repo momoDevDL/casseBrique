@@ -1,6 +1,6 @@
 CXX=g++
 CXX_FLAGS= -ansi -Wall -pedantic -g
-SOURCE= terrain.cpp window.cpp main.cpp balle.cpp raquette.cpp menu.cpp
+SOURCE= terrain.cpp window.cpp main.cpp balle.cpp raquette.cpp menu.cpp brique.cpp
 PROG=game
 MSG_OK = @ echo "\t\t\t........................OK"
 

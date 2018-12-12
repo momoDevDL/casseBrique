@@ -3,12 +3,14 @@
 #include"terrain.h"
 #include"raquette.h"
 #include"balle.h"
+#include"brique.h"
 #include"menu.h"
 using namespace std;
 
-void GlobalPrint(Ball &b,terrain &ter,racket &r){
+void GlobalPrint(Ball &b,terrain &ter,racket &r,Brick &br){
   ter.clearField();
   printRacket(r,ter);
+  printBrick(br,ter);
   ter.printInField(b.getposX(),b.getposY(),b.getChar(),WBLACK);
 }
 
@@ -47,6 +49,7 @@ void GlobalCollision(Ball &b, terrain &ter, racket &r){
 void myProgram(){
   Window w(30,70,2,2,'_');
   Menu menu;
+  Brick br;
   Ball b('@',20,10,1,1);
   terrain  ter(w,b);
   ter.setBkgdColorField(BWHITE);
@@ -62,7 +65,7 @@ void myProgram(){
    
     GlobalMove(b,ter,r1,leftMouvRacket, rightMouvRacket);
     GlobalCollision(b,ter,r1);
-    GlobalPrint(b,ter,r1);
+    GlobalPrint(b,ter,r1,br);
 
    
     switch (ch) {

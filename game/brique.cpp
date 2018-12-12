@@ -1,55 +1,76 @@
 #include "brique.h"
+#include "terrain.h"
 
+Brick::Brick() : height(0), width(5), posX(20), posY(20), resistance(1),bordure(' '){}
+Brick::Brick(int h, int w, int x, int y, int res,const char ch) : height(h), width(w), posX(x), posY(y), resistance(res),bordure(ch){}
 
-Brique::Brique() : height(0), width(0), posX(2), posY(2), resistance(1) {};
-Brique::Brique(size_t h, size_t w, size_t x, size_t y, size_t res) : height(h), width(w), posX(x), posY(y), resistance(res) {};
-
-size_t Brique::getHeight() const{
+int Brick::getHeight() const{
 
     return height;
 }
 
-size_t Brique::getWidth() const{
+int Brick::getWidth() const{
 
     return width;
 }
 
-size_t Brique::getPosX() const{
+int Brick::getPosX() const{
 
     return posX;
 }
 
-size_t Brique::getPosY() const{
+int Brick::getPosY() const{
 
     return posY;
 }
 
-size_t Brique::getResistance() const{
+int Brick::getResistance() const{
 
     return resistance;
 }
 
-void Brique::setHeight(size_t &h){
+
+
+void Brick::setHeight(int h){
 
     height = h;
 }
 
-void Brique::setWidth(size_t &w){
+void Brick::setWidth(int w){
 
     width = w;
 }
 
-void Brique::setPosX(size_t &x){
+void Brick::setPosX(int x){
 
     posX = x;
 }
 
-void Brique::setPosY(size_t &y){
+void Brick::setPosY(int y){
 
     posY = y;
 }
 
-void Brique::setResistance(size_t &res){
+void Brick::setResistance(int res){
 
     resistance = res;
+}
+
+char  Brick::getBordure()const {
+  return bordure;
+}
+
+void printBrick(Brick &br,terrain &ter){
+  int hauteur = 0;
+  int largeur = 0;
+  
+  while(hauteur <= br.getHeight()){
+
+    while(largeur <= br.getWidth()){
+      ter.printInField(br.getPosX()+largeur,br.getPosY()+hauteur,br.getBordure(),BWHITE);
+      largeur++;
+    }
+    hauteur++;
+    largeur=0;
+  }
 }

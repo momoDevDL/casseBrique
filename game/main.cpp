@@ -24,6 +24,7 @@ void myProgram(){
     while((ch = getch()) != 'q')
       {
 	  b.move_Ball();
+	  r1.collision_Ball_racket(b);
 	  ter.collision_Ball_field(b);
 	  GlobalPrint(b,ter,r1);
 	  

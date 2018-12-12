@@ -36,6 +36,8 @@ class racket{
   void setBordure2Side(char B2S);
 
   // methodes
+
+  void collision_Ball_racket(Ball &b);
   
 };
 

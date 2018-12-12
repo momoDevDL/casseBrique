@@ -1,5 +1,6 @@
 #include<iostream>
 #include"raquette.h"
+#include"balle.h"
 #include"window.h"
 
 //les constructeurs de racket par defaut et paramétré
@@ -60,6 +61,36 @@ void racket::setBordure2Side(char B2S){
 
 
 //methodes
+
+void racket::collision_Ball_racket(Ball &b){
+  int posBX = b.getposX();
+  int posBY = b.getposY();
+  int posRX1 = getXRacket();
+  int posRX2 = (getXRacket()+getWidthRacket());
+  int posRY = getYRacket();
+
+  if (posBY == posRY){
+    if(posBX == posRX1){
+      b.setVitesseY(-1); 
+      b.setVitesseX(-1);
+    } else if(posBX == posRX2){
+      b.setVitesseY(-1); 
+      b.setVitesseX(1);
+    } else if((posBX > posRX1)&&(posBX < posRX2)&&(posBX != ((posRX1+posRX2)/2))){
+      if ((b.getVitesseX()==0)&&((posBX > posRX1)&&(posBX < ((posRX1+posRX2)/2)))){
+	b.setVitesseX(-1);
+      } else if ((b.getVitesseX()==0)&&((posBX < posRX2)&&(posBX > ((posRX1+posRX2)/2)))){
+	b.setVitesseX(1);
+      }
+      b.setVitesseY(-1*(b.getVitesseY()));
+    } else if(posBX == ((posRX1+posRX2)/2)){
+      b.setVitesseY(-1); 
+      b.setVitesseX(0);
+    }
+  
+  }
+
+}
 
 void printRacket(racket &r,terrain &t){
   unsigned int hauteur = 0;

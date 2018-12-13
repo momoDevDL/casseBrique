@@ -1,7 +1,7 @@
 #ifndef __BRIQUE_H
 #define __BRIQUE_H
 #include"terrain.h"
-
+#include"balle.h"
 class Brick{
 
     private:
@@ -32,7 +32,7 @@ class Brick{
         void setPosX(int);
         void setPosY(int);
         void setResistance(int);
-
+	void collision_Ball_Brique(Ball &b);
        
 };
 

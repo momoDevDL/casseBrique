@@ -40,9 +40,10 @@ void GlobalMove(Ball &b, terrain &ter, racket &r, bool &leftM, bool &rightM){
   } 
 }
 
-void GlobalCollision(Ball &b, terrain &ter, racket &r){
+void GlobalCollision(Ball &b, terrain &ter, racket &r,Brick &br){
   r.collision_Ball_racket(b);
   ter.collision_Ball_field(b);
+  br.collision_Ball_Brique(b);
 }
 
 
@@ -52,8 +53,8 @@ void myProgram(){
   Brick br;
   Ball b('@',20,10,1,1);
   terrain  ter(w,b);
-  ter.setBkgdColorField(BWHITE);
-  ter.setBordColorField(BWHITE);
+  // ter.setBkgdColorField(BWHITE);
+  // ter.setBordColorField(BWHITE);
   racket r1(8,35,26);
   int ch ;
   bool leftMouvRacket = false;
@@ -64,7 +65,7 @@ void myProgram(){
 
    
     GlobalMove(b,ter,r1,leftMouvRacket, rightMouvRacket);
-    GlobalCollision(b,ter,r1);
+    GlobalCollision(b,ter,r1,br);
     GlobalPrint(b,ter,r1,br);
 
    

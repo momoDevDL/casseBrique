@@ -25,7 +25,7 @@ void startProgramX() {
   cbreak();              // pass key presses to program, but not signals
   noecho();              // don't echo key presses to screen
   keypad(stdscr, TRUE);  // allow arrow keys
-  timeout(60);            // no blocking on getch()
+  timeout(30);            // no blocking on getch()
   curs_set(0);           // set the cursor to invisible
   init_colors();
 }

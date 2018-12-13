@@ -16,7 +16,8 @@ void init_colors(void)
   init_pair(BYELLOW,  COLOR_BLACK, COLOR_YELLOW);  
   init_pair(BGREEN,   COLOR_BLACK, COLOR_GREEN); 
   init_pair(BMAGENTA, COLOR_BLACK, COLOR_MAGENTA);
-  init_pair(BRED,     COLOR_BLACK, COLOR_RED);  
+  init_pair(BRED,     COLOR_BLACK, COLOR_RED);
+  init_pair(MRED, COLOR_MAGENTA, COLOR_RED);
 }
 
 
@@ -25,7 +26,7 @@ void startProgramX() {
   cbreak();              // pass key presses to program, but not signals
   noecho();              // don't echo key presses to screen
   keypad(stdscr, TRUE);  // allow arrow keys
-  timeout(30);            // no blocking on getch()
+  timeout(55);            // no blocking on getch()
   curs_set(0);           // set the cursor to invisible
   init_colors();
 }

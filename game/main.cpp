@@ -7,11 +7,17 @@
 #include"menu.h"
 using namespace std;
 
+void GlobalRemove(Ball &b,terrain &ter,racket &r,Brick &br,bool &leftM, bool &rightM){
+  ter.remove_Ball(b);
+  remove_Racket(r,ter,leftM,rightM);
+  // br.remove_Brick(ter);
+
+}
+
 void GlobalPrint(Ball &b,terrain &ter,racket &r,Brick &br){
-  ter.clearField();
   printRacket(r,ter);
   printBrick(br,ter);
-  ter.printInField(b.getposX(),b.getposY(),b.getChar(),WBLACK);
+  ter.printInField(b.getposX(),b.getposY(),b.getChar(),WGREEN);
 }
 
 void GlobalMove(Ball &b, terrain &ter, racket &r, bool &leftM, bool &rightM){
@@ -48,22 +54,22 @@ void GlobalCollision(Ball &b, terrain &ter, racket &r,Brick &br){
 
 
 void myProgram(){
-  Window w(30,70,2,2,'_');
+  Window w(45,70,2,2,'_');
   Menu menu;
   Brick br;
   Ball b('@',20,10,1,1);
   terrain  ter(w,b);
-  // ter.setBkgdColorField(BWHITE);
+  //ter.setBkgdColorField(BWHITE);
   // ter.setBordColorField(BWHITE);
-  racket r1(8,35,26);
+  racket r1(12,35,26);
   int ch ;
   bool leftMouvRacket = false;
   bool rightMouvRacket = false;
   
-   
+  printBrick(br,ter);
   while((ch = getch()) != 'q'){
 
-   
+    GlobalRemove(b,ter,r1,br,leftMouvRacket,rightMouvRacket);
     GlobalMove(b,ter,r1,leftMouvRacket, rightMouvRacket);
     GlobalCollision(b,ter,r1,br);
     GlobalPrint(b,ter,r1,br);
@@ -71,10 +77,10 @@ void myProgram(){
    
     switch (ch) {
     case '1':
-      ter.setBkgdColorField(WCYAN);
+      ter.setBkgdColorField(WMAGENTA);
       break;
     case '2':
-      ter.setBkgdColorField(WRED);
+      ter.setBkgdColorField(WYELLOW);
       break;
     case '3':
       ter.setBordureField('X');

@@ -27,6 +27,7 @@ public:
 	//methodes
 
 	void move_Ball();
+	void remove_Ball();
 	
 	//void printBall(terrain &ter);
 

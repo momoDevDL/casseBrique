@@ -44,13 +44,17 @@ void terrain::setBordureField(char c){
   field.setBordure(c);
 }
 
-//methodes
 void terrain::clearField(){
   field.clear();
 }
 void terrain::printStringInField(int x,int y,string s,Color c){
   field.print(x,y,s,c);
 }
+
+void terrain::remove_Ball(Ball &b){
+  printInField(b.getposX(),b.getposY(),' ',WBLACK);
+}
+
 
 void terrain::collision_Ball_field(Ball &b){
   int  H=getHeightField();

@@ -33,9 +33,10 @@ class Brick{
         void setPosY(int);
         void setResistance(int);
 	void collision_Ball_Brique(Ball &b);
+
        
 };
 
-
+//void remove_Brick(Brick &br, terrain &ter );
 void printBrick(Brick &b,terrain &ter);
 #endif

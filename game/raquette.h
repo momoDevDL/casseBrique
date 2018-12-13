@@ -38,9 +38,10 @@ class racket{
   // methodes
 
   void collision_Ball_racket(Ball &b);
+ 
   
 };
-
+void remove_Racket(racket &r, terrain &t,bool leftM,bool RightM);
 void printRacket(racket &r,terrain &t);
 #endif
 

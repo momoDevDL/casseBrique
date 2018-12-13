@@ -30,6 +30,7 @@ public:
   void clearField(); //efface le contenu de la fenetre 
   void printStringInField(int,int,std::string,Color); //print un string dans la fenetre
   void collision_Ball_field(Ball &b);
+  void remove_Ball(Ball &b);
 };
 
 #endif

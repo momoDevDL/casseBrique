@@ -92,6 +92,34 @@ void racket::collision_Ball_racket(Ball &b){
 
 }
 
+void remove_Racket(racket &r ,terrain &t,bool leftM,bool RightM){
+  unsigned int hauteur = 0;
+  unsigned int longueur = 0;
+  if (leftM || RightM){
+    while (hauteur < r.getHeightRacket()){
+      
+      if (hauteur == 0){
+	t.printInField(r.getXRacket()+longueur,r.getYRacket()+hauteur,' ',WBLACK);
+	longueur++;
+      }else if (hauteur == 1){
+	t.printInField(r.getXRacket()+longueur,r.getYRacket()+hauteur,' ',WBLACK);
+	longueur++;
+      }
+      while (longueur <r.getWidthRacket()){
+	t.printInField(r.getXRacket()+longueur,r.getYRacket()+hauteur,' ',WBLACK);
+	longueur++;
+      }
+      if (hauteur == 0){
+	t.printInField(r.getXRacket()+longueur,r.getYRacket()+hauteur, ' ',WBLACK);
+      }else if (hauteur == 1){
+	t.printInField(r.getXRacket()+longueur,r.getYRacket()+hauteur,' ',WBLACK);
+      }
+      hauteur++;
+      longueur=0;
+    }
+  }
+}
+
 void printRacket(racket &r,terrain &t){
   unsigned int hauteur = 0;
   unsigned int longueur = 0;
@@ -118,6 +146,7 @@ void printRacket(racket &r,terrain &t){
     longueur=0;
   }
 }
+
 
 
 

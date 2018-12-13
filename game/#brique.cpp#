@@ -1,7 +1,7 @@
 #include "brique.h"
 #include "terrain.h"
 #include "balle.h"
-Brick::Brick() : height(1), width(9), posX(30), posY(10), resistance(1),bordure(' '){}
+Brick::Brick() : height(2), width(9), posX(30), posY(10), resistance(1),bordure(' '){}
 Brick::Brick(int h, int w, int x, int y, int res,const char ch) : height(h), width(w), posX(x), posY(y), resistance(res),bordure(ch){}
 
 int Brick::getHeight() const{return height; }
@@ -70,7 +70,7 @@ void Brick::collision_Ball_Brique(Ball &b){
 }
 
 
-void remove_Brick(Brick &br,terrain &ter){
+/*void remove_Brick(Brick &br,terrain &ter){
   int hauteur = 0;
   int largeur = 0;
   
@@ -84,4 +84,4 @@ void remove_Brick(Brick &br,terrain &ter){
     largeur=0;
   }
   
-}
+  }*/

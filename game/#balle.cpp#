@@ -41,3 +41,4 @@ void Ball::move_Ball(){
   setposY(posY+getVitesseY());
 }
 
+

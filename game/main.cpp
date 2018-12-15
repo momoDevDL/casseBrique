@@ -7,16 +7,20 @@
 #include"menu.h"
 using namespace std;
 
-void GlobalRemove(Ball &b,terrain &ter,racket &r,Brick &br,bool &leftM, bool &rightM){
+void GlobalRemove(Ball &b,terrain &ter,racket &r,bool &leftM, bool &rightM){
   ter.remove_Ball(b);
   remove_Racket(r,ter,leftM,rightM);
-  // br.remove_Brick(ter);
+  // remove_Brick(br,ter,WCYAN);
 
 }
 
-void GlobalPrint(Ball &b,terrain &ter,racket &r,Brick &br){
+void GlobalPrint(Ball &b,terrain &ter,racket &r,Brick *br,unsigned int nbrBrick){
   printRacket(r,ter);
-  printBrick(br,ter);
+  unsigned int nbr= 0;
+  while(nbr < nbrBrick){
+    printBrick(br[nbr],ter,BWHITE);
+    nbr++;
+  }
   ter.printInField(b.getposX(),b.getposY(),b.getChar(),WGREEN);
 }
 
@@ -46,33 +50,60 @@ void GlobalMove(Ball &b, terrain &ter, racket &r, bool &leftM, bool &rightM){
   } 
 }
 
-void GlobalCollision(Ball &b, terrain &ter, racket &r,Brick &br){
+void GlobalCollision(Ball &b, terrain &ter, racket &r,Brick* br,unsigned int nbrBrick){
   r.collision_Ball_racket(b);
   ter.collision_Ball_field(b);
-  br.collision_Ball_Brique(b);
+  unsigned int nbr =0 ;
+  while( nbr < nbrBrick ){
+    collision_Ball_Brique(b,br[nbr]);
+    nbr++;
+  }
 }
+
+void initTabBrick(Brick * br,unsigned int taille ,int posXDebut,int posYDebut ,terrain &ter){
+  br[0].setPosX(posXDebut);
+  br[0].setPosY(posYDebut);
+  unsigned int i=1 ;
+  while(i < taille){
+    if( ter.getWidthField() - (br[i-1].getWidth() +  br[i-1].getPosX()) > br[i-1].getWidth() + 5 ){
+      br[i].setPosX( br[i-1].getPosX() + br[i-1].getWidth() + 5 );
+      br[i].setPosY(br[i-1].getPosY());
+      br[i].setResistance(2);
+      i++;
+    }else{
+      br[i].setPosY( br[i-1].getPosY() + br[i-1].getHeight() + 2);
+      br[i].setPosX(posXDebut);
+      br[i].setResistance(2);
+      i++;
+    }
+  }
+}
+
 
 
 void myProgram(){
   Window w(45,70,2,2,'_');
+  unsigned int nbrBrick =3;
   Menu menu;
-  Brick br;
-  Ball b('@',20,10,1,1);
+  Ball b('@',35,35,1,1);
   terrain  ter(w,b);
+  Brick tab[nbrBrick];
+  initTabBrick(tab,nbrBrick, 4 ,4 ,ter);
+  //  Brick br;
   //ter.setBkgdColorField(BWHITE);
   // ter.setBordColorField(BWHITE);
-  racket r1(12,35,26);
+  racket r1(12,35,40);
   int ch ;
   bool leftMouvRacket = false;
   bool rightMouvRacket = false;
   
-  printBrick(br,ter);
+  //GlobalPrint(b,ter,r1,tab,5);
   while((ch = getch()) != 'q'){
 
-    GlobalRemove(b,ter,r1,br,leftMouvRacket,rightMouvRacket);
+    GlobalRemove(b,ter,r1,leftMouvRacket,rightMouvRacket);
     GlobalMove(b,ter,r1,leftMouvRacket, rightMouvRacket);
-    GlobalCollision(b,ter,r1,br);
-    GlobalPrint(b,ter,r1,br);
+    GlobalCollision(b,ter,r1,tab,nbrBrick);
+    GlobalPrint(b,ter,r1,tab,nbrBrick);
 
    
     switch (ch) {

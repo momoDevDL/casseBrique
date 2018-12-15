@@ -10,7 +10,7 @@ class Brick{
         int width;
         int posX;
         int posY;
-        int resistance;
+        unsigned int resistance;
 	char bordure ;
 
     public:
@@ -32,11 +32,12 @@ class Brick{
         void setPosX(int);
         void setPosY(int);
         void setResistance(int);
-	void collision_Ball_Brique(Ball &b);
+	
+
 
        
 };
-
-//void remove_Brick(Brick &br, terrain &ter );
-void printBrick(Brick &b,terrain &ter);
+void collision_Ball_Brique(Ball &b,Brick &br);
+void remove_Brick(Brick &br, terrain &ter,Color col);
+void printBrick(Brick &br,terrain &ter,Color col);
 #endif

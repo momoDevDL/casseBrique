@@ -64,10 +64,11 @@ void terrain::collision_Ball_field(Ball &b){
   
   if(b.getposY()==(Y+H)-2 || b.getposY()==Y){
     b.setVitesseY(-1*(b.getVitesseY()));
-    /* if(b.getposY()==(Y+H)-2){
+    if(b.getposY()==(Y+H)-2){
       b.setVitesseX(0);
       b.setVitesseY(0);
-      }*/
+      printStringInField(field.getLargeur()/2 - 3,field.getHauteur()/2,"GAME OVER",WYELLOW);
+      }
   }
   if(b.getposX()==(X+L)-1|| b.getposX()==X){
     b.setVitesseX(-1*(b.getVitesseX()));

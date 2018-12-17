@@ -27,6 +27,10 @@ int  Menu::getXMenu()const{
   return menu.getX();
 }
 
+
+void Menu::printInMenu(float x,float y,char c, Color cl){
+  menu.print(x,y,c,cl);
+}
 //accesseurs en ecriture
 void Menu::setBkgdColorMenu(Color couleur){
   menu.setCouleurFenetre(couleur);

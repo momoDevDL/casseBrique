@@ -29,6 +29,9 @@ private:
 	//	void setWidthMenu(int W);
 	void setBordureMenu(char c);
 
+	// print un carcatere dans le menu 
+	void printInMenu(float x,float y, char c,Color cl); 
+
 	//methodes
 
 	void printStringInMenu(int x, int y,std::string);

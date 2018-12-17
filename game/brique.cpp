@@ -39,11 +39,24 @@ void printBrick(Brick &br, terrain &ter,Color col){
       while(largeur < br.getWidth()){
 	switch(resistance){
 	case 1 :
-	  ter.printInField(br.getPosX()+largeur,br.getPosY()+hauteur,br.getBordure(),WYELLOW);
+	  ter.printInField(br.getPosX()+largeur,br.getPosY()+hauteur,br.getBordure(),WRED);
 	  break;
 	case 2 :
+	  ter.printInField(br.getPosX()+largeur,br.getPosY()+hauteur,br.getBordure(),WBLUE);
+	  break;
+	case 3 :
+	  ter.printInField(br.getPosX()+largeur,br.getPosY()+hauteur,br.getBordure(),WYELLOW);
+	  break;
+	case 4 :
+	  ter.printInField(br.getPosX()+largeur,br.getPosY()+hauteur,br.getBordure(),WGREEN);
+	  break;
+	case 5 :
+	  ter.printInField(br.getPosX()+largeur,br.getPosY()+hauteur,br.getBordure(),WMAGENTA);
+	  break;
+	default :
 	  ter.printInField(br.getPosX()+largeur,br.getPosY()+hauteur,br.getBordure(),col);
 	}
+      
 	largeur++;
       }
       hauteur++;

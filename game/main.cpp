@@ -3,10 +3,11 @@
 #include"terrain.h"
 #include"raquette.h"
 #include"balle.h"
+#include<stdlib.h>
+#include<time.h>
 #include"brique.h"
 #include"menu.h"
 using namespace std;
-
 void GlobalRemove(Ball &b,terrain &ter,racket &r,bool &leftM, bool &rightM){
   ter.remove_Ball(b);
   remove_Racket(r,ter,leftM,rightM);
@@ -63,17 +64,20 @@ void GlobalCollision(Ball &b, terrain &ter, racket &r,Brick* br,unsigned int nbr
 void initTabBrick(Brick * br,unsigned int taille ,int posXDebut,int posYDebut ,terrain &ter){
   br[0].setPosX(posXDebut);
   br[0].setPosY(posYDebut);
+  srand (time(NULL));
   unsigned int i=1 ;
+  unsigned int resistance_generator= rand()%10+1;
   while(i < taille){
-    if( ter.getWidthField() - (br[i-1].getWidth() +  br[i-1].getPosX()) > br[i-1].getWidth() + 5 ){
-      br[i].setPosX( br[i-1].getPosX() + br[i-1].getWidth() + 5 );
+      resistance_generator= rand()%10+1;
+    if( ter.getWidthField() - (br[i-1].getWidth() +  br[i-1].getPosX()) > br[i-1].getWidth() + 1 ){
+      br[i].setPosX( br[i-1].getPosX() + br[i-1].getWidth() + 1 );
       br[i].setPosY(br[i-1].getPosY());
-      br[i].setResistance(2);
+      br[i].setResistance(resistance_generator);
       i++;
     }else{
       br[i].setPosY( br[i-1].getPosY() + br[i-1].getHeight() + 2);
       br[i].setPosX(posXDebut);
-      br[i].setResistance(2);
+      br[i].setResistance(resistance_generator);
       i++;
     }
   }
@@ -83,7 +87,7 @@ void initTabBrick(Brick * br,unsigned int taille ,int posXDebut,int posYDebut ,t
 
 void myProgram(){
   Window w(45,70,2,2,'_');
-  unsigned int nbrBrick = 31;
+  unsigned int nbrBrick = 30;
   Menu menu;
   Ball b('@',35,35,1,1);
   terrain  ter(w,b);
@@ -97,7 +101,7 @@ void myProgram(){
   bool leftMouvRacket = false;
   bool rightMouvRacket = false;
   
-  //GlobalPrint(b,ter,r1,tab,5);
+  GlobalPrint(b,ter,r1,tab,5);
   while((ch = getch()) != 'q'){
 
     GlobalRemove(b,ter,r1,leftMouvRacket,rightMouvRacket);

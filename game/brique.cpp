@@ -37,7 +37,13 @@ void printBrick(Brick &br, terrain &ter,Color col){
     while(hauteur < br.getHeight()){
       
       while(largeur < br.getWidth()){
-	ter.printInField(br.getPosX()+largeur,br.getPosY()+hauteur,br.getBordure(),col);
+	switch(resistance){
+	case 1 :
+	  ter.printInField(br.getPosX()+largeur,br.getPosY()+hauteur,br.getBordure(),WYELLOW);
+	  break;
+	case 2 :
+	  ter.printInField(br.getPosX()+largeur,br.getPosY()+hauteur,br.getBordure(),col);
+	}
 	largeur++;
       }
       hauteur++;
@@ -87,7 +93,7 @@ void collision_Ball_Brique(Ball &b,Brick &br){
       
       if(position_ballY == posY-1 && (position_ballX >=posX && position_ballX<= (posX+width))){
 	b.setVitesseY(Vitesse_BallY *-1);
-	br.setResistance(resistance--);
+	br.setResistance(resistance-1);
       }
       if( position_ballX == posX-1 && (position_ballY >= posY-1 && position_ballY <= posY+height)){
 	b.setVitesseX(Vitesse_BallX *-1);

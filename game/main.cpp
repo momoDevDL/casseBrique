@@ -15,13 +15,13 @@ void GlobalRemove(Ball &b,terrain &ter,racket &r,bool &leftM, bool &rightM){
 }
 
 void GlobalPrint(Ball &b,terrain &ter,racket &r,Brick *br,unsigned int nbrBrick){
+  ter.printInField(b.getposX(),b.getposY(),b.getChar(),WGREEN);
   printRacket(r,ter);
   unsigned int nbr= 0;
   while(nbr < nbrBrick){
     printBrick(br[nbr],ter,BWHITE);
     nbr++;
   }
-  ter.printInField(b.getposX(),b.getposY(),b.getChar(),WGREEN);
 }
 
 void GlobalMove(Ball &b, terrain &ter, racket &r, bool &leftM, bool &rightM){
@@ -83,7 +83,7 @@ void initTabBrick(Brick * br,unsigned int taille ,int posXDebut,int posYDebut ,t
 
 void myProgram(){
   Window w(45,70,2,2,'_');
-  unsigned int nbrBrick =3;
+  unsigned int nbrBrick = 31;
   Menu menu;
   Ball b('@',35,35,1,1);
   terrain  ter(w,b);

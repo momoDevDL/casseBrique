@@ -4,8 +4,8 @@
 #include"window.h"
 using namespace std;
 //les constructeurs de terrain par defaut et paramétré
-terrain::terrain():field(22,78,0,0,'+'),b('@',9,5,1,1){}
-terrain::terrain(Window &fields,Ball &_b):field(fields.getHauteur(),fields.getLargeur(),fields.getX(),fields.getY(),fields.getBordure()),b(_b.getChar(),_b.getposX(),_b.getposY(),_b.getVitesseX(),_b.getVitesseY()){
+terrain::terrain():field(22,78,0,0,'+'),b('@',9,5,1,1,0){}
+terrain::terrain(Window &fields,Ball &_b):field(fields.getHauteur(),fields.getLargeur(),fields.getX(),fields.getY(),fields.getBordure()),b(_b.getChar(),_b.getposX(),_b.getposY(),_b.getVitesseX(),_b.getVitesseY(),_b.getDeplacement()){
  
   //fields.setCouleurBordure(WRED);
   //fields.setCouleurFenetre(BWHITE);

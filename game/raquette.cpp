@@ -11,6 +11,9 @@ racket::racket():height(2),width(8),posX(35),posY(20){
 racket::racket(unsigned int w,unsigned int x,unsigned int y ):width(w),posX(x),posY(y){
   setHeightRacket(2),setBordureUP('-'),setBordure1Side(','),setBordure2Side('\'');}
 
+racket::racket(unsigned int w,unsigned int x,unsigned int y, Ball &b):width(w),posX(x),posY(y){
+  setHeightRacket(2),setBordureUP('-'),setBordure1Side(','),setBordure2Side('\''),b.setposY(getYRacket()),b.setposX((getXRacket())+(0.5*getWidthRacket())),b.setVitesseX(0.0),b.setVitesseY(0.0),b.setDeplacement(1);}
+
 //accesseur en lecture 
 unsigned int racket::getHeightRacket()const{
   return height;

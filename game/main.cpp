@@ -16,8 +16,10 @@ void GlobalRemove(Ball &b,terrain &ter,racket &r,bool &leftM, bool &rightM){
 }
 
 void GlobalPrint(Ball &b,terrain &ter,racket &r,Brick *br,unsigned int nbrBrick){
-  ter.printInField(b.getposX(),b.getposY(),b.getChar(),WGREEN);
   printRacket(r,ter);
+  if ((b.getDeplacement()==1)||(b.getDeplacement()==2)){
+    ter.printInField(b.getposX(),b.getposY(),b.getChar(),WBLACK);
+  }
   unsigned int nbr= 0;
   while(nbr < nbrBrick){
     printBrick(br[nbr],ter,BWHITE);
@@ -27,7 +29,9 @@ void GlobalPrint(Ball &b,terrain &ter,racket &r,Brick *br,unsigned int nbrBrick)
 
 void GlobalMove(Ball &b, terrain &ter, racket &r, bool &leftM, bool &rightM){
   
-  b.move_Ball();
+  if (b.getDeplacement()==2){
+    b.move_Ball();
+  }
   
   if (leftM) {
 
@@ -48,12 +52,17 @@ void GlobalMove(Ball &b, terrain &ter, racket &r, bool &leftM, bool &rightM){
 	
 	r.setPosXRacket((ter.getXField() + ter.getWidthField())-(r.getWidthRacket()+3));
       }
-  } 
+  }
+  if (b.getDeplacement()==1){
+    b.setposX((r.getXRacket())+(0.5*r.getWidthRacket()));
+  }
 }
 
 void GlobalCollision(Ball &b, terrain &ter, racket &r,Brick* br,unsigned int nbrBrick){
-  r.collision_Ball_racket(b);
-  ter.collision_Ball_field(b);
+  if (b.getDeplacement()==2){
+    r.collision_Ball_racket(b);
+    ter.collision_Ball_field(b);
+  }
   unsigned int nbr =0 ;
   while( nbr < nbrBrick ){
     collision_Ball_Brique(b,br[nbr]);
@@ -85,18 +94,18 @@ void initTabBrick(Brick * br,unsigned int taille ,int posXDebut,int posYDebut ,t
 
 void Game_Launch(){
   
-  Window w(45,80,2,2,'_');
+  Window w(40,70,2,2,'_');
   unsigned int nbrBrick = 40;
-  Ball b('@',35,35,1,1);
+  Ball b('@',35,27,0,0,1);
   terrain  ter(w,b);
   Brick tab[nbrBrick];
   initTabBrick(tab,nbrBrick, 4 ,4 ,ter);
-  racket r1(12,35,40);
+  racket r1(12,30,36,b);
   int ch ;
   bool leftMouvRacket = false;
   bool rightMouvRacket = false;
 
-  GlobalPrint(b,ter,r1,tab,5); 
+  //GlobalPrint(b,ter,r1,tab,5); 
   while((ch = getch()) != 'q'){
     
     GlobalRemove(b,ter,r1,leftMouvRacket,rightMouvRacket);
@@ -135,8 +144,11 @@ void Game_Launch(){
       leftMouvRacket=false;
       break;
     case ' ':
-      leftMouvRacket=false;
-      rightMouvRacket=false;
+      if (b.getDeplacement()==1){
+	b.setDeplacement(2);
+	b.setVitesseX(0);
+	b.setVitesseY(-1);
+      }
       break;
    
     }

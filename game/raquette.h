@@ -1,7 +1,9 @@
 #ifndef __RAQUETTE_h
 #define __RAQUETTE_h
 #include "terrain.h"
+#include "balle.h"
 #include <string>
+
 class racket{
  private:
  unsigned int height;
@@ -16,6 +18,7 @@ class racket{
   //les constructeurs de racket par defaut et paramétré
   racket();
   racket(unsigned int w,unsigned int x,unsigned int y);
+  racket(unsigned int w,unsigned int x,unsigned int y,Ball &b);
   
   //accesseur en lecture 
   unsigned int getHeightRacket()const;

@@ -9,7 +9,7 @@ Menu::Menu(Window &w):menu(w.getHauteur(),w.getLargeur(),w.getX(),w.getY(),w.get
 
 //accesseur en lecture ColorMenu::getBkgdColorMenu()const{
 // w.getCouleurFenetre();
-menu.setCouleurFenetre(WRED);
+menu.setCouleurFenetre(WBLACK);
 }
 Color Menu::getBordColorMenu()const{
   return menu.getCouleurBordure();
@@ -37,6 +37,6 @@ void Menu::setBkgdColorMenu(Color couleur){
 }
 //methodes
 
-void Menu::printStringInMenu(int x,int y,std::string s){
- menu.print(x,y,s);
+void Menu::printStringInMenu(int x,int y,std::string s,Color col){
+  menu.print(x,y,s,col);
 }

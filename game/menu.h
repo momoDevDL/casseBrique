@@ -34,7 +34,7 @@ private:
 
 	//methodes
 
-	void printStringInMenu(int x, int y,std::string);
+	void printStringInMenu(int x, int y,std::string,Color col);
 	
 	
 };

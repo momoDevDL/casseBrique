@@ -83,33 +83,28 @@ void initTabBrick(Brick * br,unsigned int taille ,int posXDebut,int posYDebut ,t
   }
 }
 
-
-
-void myProgram(){
-  Window w(45,70,2,2,'_');
-  unsigned int nbrBrick = 30;
-  Menu menu;
+void Game_Launch(){
+  
+  Window w(45,80,2,2,'_');
+  unsigned int nbrBrick = 40;
   Ball b('@',35,35,1,1);
   terrain  ter(w,b);
   Brick tab[nbrBrick];
   initTabBrick(tab,nbrBrick, 4 ,4 ,ter);
-  //  Brick br;
-  //ter.setBkgdColorField(BWHITE);
-  // ter.setBordColorField(BWHITE);
   racket r1(12,35,40);
   int ch ;
   bool leftMouvRacket = false;
   bool rightMouvRacket = false;
-  
-  GlobalPrint(b,ter,r1,tab,5);
-  while((ch = getch()) != 'q'){
 
+  GlobalPrint(b,ter,r1,tab,5); 
+  while((ch = getch()) != 'q'){
+    
     GlobalRemove(b,ter,r1,leftMouvRacket,rightMouvRacket);
     GlobalMove(b,ter,r1,leftMouvRacket, rightMouvRacket);
     GlobalCollision(b,ter,r1,tab,nbrBrick);
     GlobalPrint(b,ter,r1,tab,nbrBrick);
-
-   
+    
+    
     switch (ch) {
     case '1':
       ter.setBkgdColorField(WMAGENTA);
@@ -146,6 +141,72 @@ void myProgram(){
    
     }
   }    
+  
+}
+
+void myProgram(){
+
+  Window w(20,30,50,20,' ');
+  Menu menu(w);
+  int ch;
+  string Choix[]={
+    "Lancer un nouveau Jeu",
+    "Lancer une sauvegarde",
+    "TUTORIEL",
+    "Quitter",
+  };
+  int choix =1;
+  int posX2Choix = 2;
+  int posY2Choix= 2;
+  int indice2Choix=-1;
+  Color Highlight=WRED;
+  menu.printStringInMenu(posX2Choix,posY2Choix,Choix[0],WBLACK);
+  menu.printStringInMenu(posX2Choix,posY2Choix+2,Choix[1],WBLACK);
+  menu.printStringInMenu(posX2Choix,posY2Choix+4,Choix[2],WBLACK);
+  menu.printStringInMenu(posX2Choix,posY2Choix+6,Choix[3],WBLACK);
+  
+  while(choix!=0 ){
+    ch = getch();
+    switch (ch) {
+      
+    case KEY_DOWN:
+      if(indice2Choix==-1){
+	menu.printStringInMenu(posX2Choix,posY2Choix,Choix[indice2Choix+1],Highlight);
+       	indice2Choix++;
+	//	posY2Choix+=2;
+      }else{
+	menu.printStringInMenu(posX2Choix,posY2Choix,Choix[indice2Choix],WBLACK);
+	indice2Choix++;
+	posY2Choix+=2;
+	choix++;
+	menu.printStringInMenu(posX2Choix,posY2Choix,Choix[indice2Choix],Highlight);
+	
+      }
+      //menu.printStringInMenu(2,4,Choix[1],WRED);
+      break;
+    case KEY_UP:
+      menu.printStringInMenu(posX2Choix,posY2Choix,Choix[indice2Choix],WBLACK);
+      posY2Choix-=2;
+      indice2Choix--;
+      choix--;
+      menu.printStringInMenu(posX2Choix,posY2Choix,Choix[indice2Choix],Highlight);
+      // menu.printStringInMenu(2,2,Choix[0],WRED);
+      //menu.printStringInMenu(2,4,Choix[1],WBLACK);
+      break;
+    case 10 :
+      choix=0;
+      break;
+  
+    }
+  }
+  
+ switch(indice2Choix){
+ case 3:
+   break;
+ case 0 :
+   Game_Launch();
+   break;
+  }
 }
 
 int main(){

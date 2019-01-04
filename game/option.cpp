@@ -2,76 +2,86 @@
 #include"option.h"
 using namespace std;
 //les constructeurs de terrain par defaut et paramétré
-Option::Option():identifiant(Option::NONE),_type(AUCUN),nom(""),raccourci(""),description("UKNOWN"){}
-  Option::Option(Ido identifiant,Type type,string _nom,string racc,string descr):identifiant(identifiant),_type(type),nom(_nom),raccourci(racc),description(descr){}
+Option::Option():id(Option::NONE),type(AUCUN),raccourci(""),description("UNKNOWN"){}
+Option::Option(Ido identifiant,Type t,string racc,string descr):id(identifiant),type(t),raccourci(racc),description(descr){}
 
+Option& Option::operator=(const Option &opt){
+  if(this != &opt){
+  description = opt.getdescription();
+  id = opt.getId();
+  type = opt.getType();
+  raccourci = opt.getraccourci();
+  }
+  return *this;
+  
+}
 //accesseur en lecture 
-Ido Option::getId(){
-  return Ido;
-}const
-string  Option::getnom(){
-  return nom;
-}const
-string  Option::getraccourci(){
+Option::Ido Option::getId()const{
+  return id;
+}
+
+string  Option::getraccourci()const{
   return raccourci;
-}const
-string  Option::getdescrption(){
+}
+string  Option::getdescription()const{
   return description;
-}const
-Type Option::getType(){
-  return Type;
-}const
+}
+Option::Type Option::getType()const{
+  return type;
+}
 
   //accesseurs en ecriture
-void Option::setId(Ido id){
-  this->Ido=id;
+void Option::setId(Option::Ido ID){
+  id=ID;
 }
-void Option::setNom(const &s){
-  this-nom=s;
-}
+
 void Option::setRaccourci(const string &r){
-  this->raccourci=r;
+  raccourci=r;
 }
 void Option::setDescription(const string &d){
-  this->description=d;
+  description=d;
 }
 void Option::setType(Type t){
-  this->type=t;
+  type=t;
 }
 
   //afficher l'option
-void Option::print(){
-  cout<<ID2String(Ido)<<" ( "<<raccourci<<" ) "<<Type2String(_type)<<" :"<<endl;
-  cout<<"----"<<descrption<<"----"<<endl;
-}const
+void Option::print()const{
+  cout<<ID2String(id)<<": ( "<<raccourci<<" ) "<<Type2String(type)<<" :"<<endl;
+  cout<<"----Description----"<<endl;
+  cout<<description<<endl;
+  cout<<"/=--------------------=/"<<endl;
+}
 
 
 //transformer mon type en string
 string Type2String(Option::Type t){
-  string t_ype;
+  string type;
   switch(t){
   case Option::ENTIER:
-    t_ype="<ENTIER>"; break;
+    type="<ENTIER>"; break;
   case Option::CHARACTER:
-    t_ype="<CHARACTER>"; break;
+    type="<CHARACTER>"; break;
   case Option::AUCUN:
-    t_ype="<AUCUN>"; break;
+    type="<AUCUN>"; break;
   case Option::STRING:
-    t_ype="<STRING>"; break; 
+    type="<STRING>"; break; 
   }
-  return t_ype;
+  return type;
 }
 
 //transformer mon id en
-string ID2String(Option::Ido Id){
+string ID2String(const Option::Ido Id){
   string ID;
-   switch(Id){
+  switch(Id){
   case Option::HELP:
-   ID="HELP"; break;
+    ID="HELP"; break;
   case Option::VERSION:
     ID="VERSION"; break;
   case Option::AUTHORS:
     ID="AUTHORS"; break;
+  case Option::NBR_BRICK :
+    ID="NBR_BRICK"; break;
   case Option::NONE:
     ID="UKNOWN"; break; 
   }

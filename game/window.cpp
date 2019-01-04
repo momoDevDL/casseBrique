@@ -26,7 +26,7 @@ void startProgramX() {
   cbreak();              // pass key presses to program, but not signals
   noecho();              // don't echo key presses to screen
   keypad(stdscr, TRUE);  // allow arrow keys
-  timeout(55);            // no blocking on getch()
+  timeout(30);            // no blocking on getch()
   curs_set(0);           // set the cursor to invisible
   init_colors();
 }
@@ -49,7 +49,7 @@ void Window::update() const{
 Window::Window(int h,int w, int x, int y, char c)
   : height(h), width(w), startx(x), starty(y), bord(c)
 {
-  colorwin=WCYAN;
+  colorwin=WBLACK;
   colorframe=WBLACK;
   frame=newwin(h+2,w+2,y,x);
   win=subwin(frame,h,w,y+1,x+1);

@@ -8,7 +8,7 @@ class Menu {
 private:
           Window menu;  
 
- public :
+public:
 
 	// constructeur par défaut et parametré de menu
 	Menu();
@@ -35,6 +35,7 @@ private:
 	//methodes
 
 	void printStringInMenu(int x, int y,std::string,Color col);
+       	void ClearMenu();
 	
 	
 };

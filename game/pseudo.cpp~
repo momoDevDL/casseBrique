@@ -1,0 +1,51 @@
+#include"pseudo.h"
+
+pseudo::pseudo():interface(22,78,0,0,'+'),pseudonyme("user"){};
+pseudo::pseudo(Window &i, std::string p):interface(interface.getHauteur(),interface.getLargeur(),interface.getX(),interface.getY(),interface.getBordure()),pseudonyme(p){};
+
+//Accesseurs en lecture
+Color pseudo::getBkgdColorPseudo()const{
+  return interface.getCouleurFenetre();
+}
+Color pseudo::getBordColorPseudo()const{
+  return interface.getCouleurBordure();
+}
+int pseudo::getHeightPseudo()const{
+  return interface.getHauteur();
+}
+int pseudo::getWidthPseudo()const{
+  return interface.getLargeur();
+}
+int pseudo::getXPseudo()const{
+  return interface.getX();
+}
+int pseudo::getYPseudo()const{
+  return interface.getY();
+}
+std::string pseudo::getPseudonyme()const{
+    return pseudonyme;
+}
+
+//Accesseurs en écriture
+void pseudo::setBkgdColorPseudo(Color couleur){
+    interface.setCouleurFenetre(couleur);
+}
+void pseudo::setBordColorPseudo(Color couleur){
+    interface.setCouleurBordure(couleur);
+}
+void pseudo::setBordurePseudo(char c){
+    interface.setBordure(c);
+}
+void pseudo::setPseudonyme(std::string p){
+    pseudonyme = p;
+}
+
+void printInPseudo(float x,float y,char c,Color col){
+    interface.print(x,y,c,col);
+}
+void pseudo::printStringInPseudo(int x,int y,std::string p,Color col){
+    interface.print(x,y,p,col);
+}
+void pseudo::clearField(){
+    interface.clear();
+}

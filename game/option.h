@@ -2,44 +2,46 @@
 #define __OPTION_H
 #include <string>
 class Option{
+  
  public:
 enum Ido{
   HELP,
   VERSION,
   AUTHORS,
-  NONE,
-  NB_IDO
+  NBR_BRICK,
+  CONFIG,
+  NONE
 };
 
 enum Type{
   ENTIER,
   CHARACTER,
   STRING,
-  AUCUN,
-  NB_TYPE
+  AUCUN
 };
 
  private:
-  Ido identifiant;
-  Type _type ;
-  std::string nom,raccourci,description;
+  Ido id;
+  Type type ;
+  std::string raccourci;
+  std::string description;
  public:
   //constructeur par defaut
   Option();
   //constructeurs paramétré
-  Option(Ido,Type,std::string,std::string,std::string);
+  Option(Ido,Type,std::string,std::string);
+
+  Option& operator=(const Option &o);
   //accesseurs en lecture
-  Ido  getId()const;
-  std::string  getnom()const;
+  Option::Ido  getId()const;
   std::string  getraccourci()const;
-  std::string  getdescrption()const;
+  std::string getdescription()const;
   Type getType()const;
 
   //accesseurs en ecriture
   void setId(Ido);
-  void setNom(const &std::string);
-  void setRaccourci(const &std::string);
-  void setDescription(const &std::string);
+  void setRaccourci(const std::string &s);
+  void setDescription(const std::string &s);
   void setType(Type);
 
   //afficher l'option
@@ -49,5 +51,7 @@ enum Type{
 
 //transformer mon type en string
 std::string Type2String(Option::Type);
+
 //transformer mon id en string
-std::string ID2String(Option::Ido);
+std::string ID2String( Option::Ido);
+#endif
